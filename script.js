@@ -294,11 +294,76 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
 
-    // 3. INICIALIZAÇÃO DE COMPONENTES DE EXERCÍCIOS/FILTROS (Chamados aqui, fora do login, para pré-carregar os dados)
-    renderExerciseFilters();
-    renderOverviewChart();
-    renderMarketChart();
-    renderExerciseGrid();
+     // NOVO: 7. PADRÃO DE PROJETO FACADE
+      
+    class PanelInitializerFacade {
+    // O construtor é onde você pode passar dependências, se houver
+    constructor(exerciseFilterRenderer, exerciseGridRenderer) {
+        this.renderExerciseFilters = exerciseFilterRenderer;
+        this.renderExerciseGrid = exerciseGridRenderer;
+    }
+
+    // O MÉTODO PRINCIPAL que expõe a funcionalidade simplificada
+    initializeAllInteractiveComponents() {
+        console.log("FACADE: Inicializando componentes interativos do painel...");
+        
+        // As ações que antes estavam soltas, agora estão organizadas no Facade
+        this.renderExerciseFilters(); 
+        this.renderExerciseGrid();
+    }
+
+    initializeAllCharts() {
+        console.log("FACADE: Renderizando todos os gráficos (requer 'main-content' visível)...");
+        // Estas funções são chamadas após o login, quando o main-content está visível
+        renderOverviewChart();
+        renderMarketChart();
+    }
+}
+// --- FIM PADRÃO FACADE ---
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Mantenha toda a lógica de login e modals) ...
+
+    // Instanciando o Facade
+    const initializerFacade = new PanelInitializerFacade(renderExerciseFilters, renderExerciseGrid);
+    
+    // Chamada inicial (antes do login)
+    // O Facade inicializa os filtros e a grade, mas os gráficos não
+    initializerFacade.initializeAllInteractiveComponents(); 
+    
+    // Modifique a função de Login (Simulação de autenticação bem-sucedida)
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // ... (Lógica de LGPD) ...
+
+        // Simulação de autenticação bem-sucedida
+        loginScreen.style.opacity = 0;
+        loginScreen.style.transition = 'opacity 0.5s ease';
+
+        setTimeout(() => {
+            loginScreen.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            
+            // AGORA CHAMAMOS O FACADE PARA RENDERIZAR OS GRÁFICOS
+            initializerFacade.initializeAllCharts();
+        }, 500);
+    });
+
+    // ... (Mantenha toda a lógica de scroll, modais de exercícios, etc.) ...
+    
+    // REMOVA AS TRÊS LINHAS DE CHAMADA DE FUNÇÃO ANTIGAS AQUI:
+    // renderOverviewChart();  <-- REMOVIDO!
+    // renderMarketChart();    <-- REMOVIDO!
+    // renderExerciseFilters();  <-- MANTIDO AQUI (MAS CHAMADO PELO FACADE)
+    // renderExerciseGrid();     <-- MANTIDO AQUI (MAS CHAMADO PELO FACADE)
+});              
+
+    // INICIALIZAÇÃO DE COMPONENTES DE EXERCÍCIOS/FILTROS (Chamados aqui, fora do login, para pré-carregar os dados)
+   // renderExerciseFilters();
+    //renderOverviewChart();
+    //renderMarketChart();
+    //renderExerciseGrid();
 });
