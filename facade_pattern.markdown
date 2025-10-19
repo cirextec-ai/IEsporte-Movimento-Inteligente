@@ -1,8 +1,8 @@
 # Padrão de Projeto Estrutural: Facade (Fachada)
 
-O Padrão Facade oferece uma interface simplificada para um subsistema que é, inerentemente, complexo.
+O Padrão Facade oferece uma interface simplificada para um subsistema, inerentemente complexo.
 
-## 💡 Por Que o Padrão Facade é Ideal para seu Projeto?
+## 💡 Por Que o Padrão Facade é Ideal?
 
 O código JavaScript (script.js) atual lida com a exibição de dados, filtros e diversas interações de interface, como:
 
@@ -11,7 +11,7 @@ O código JavaScript (script.js) atual lida com a exibição de dados, filtros e
 - Montagem da grade de exercícios.
 - Controle de modais.
 
-O Facade é a melhor escolha para este cenário, pois organiza essas múltiplas responsabilidades em um ponto de acesso único e fácil de usar.
+O Facade é a melhor escolha para este cenário, organizando essas múltiplas responsabilidades em um ponto de acesso único e fácil de usar.
 
 ## 🧒 Benefícios do Padrão Facade no Projeto
 
@@ -23,7 +23,7 @@ O Facade é a melhor escolha para este cenário, pois organiza essas múltiplas 
 
 ## 🧠 Implementação: O "Botão de Iniciar"
 
-No seu projeto, criamos uma única classe Facade chamada `PanelInitializerFacade` que atua como o "Botão de Iniciar" do seu painel, gerenciando todas as dependências internas.
+No projeto, criamos uma única classe Facade chamada `PanelInitializerFacade` que atua como o "Botão de Iniciar" do painel, gerenciando todas as dependências internas.
 
 ## 📊 Diagrama UML do Padrão Facade
 
