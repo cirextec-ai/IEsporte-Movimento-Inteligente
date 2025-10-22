@@ -35,7 +35,29 @@ A arquitetura do IEsporte é desenhada para ser modular, permitindo a separaçã
 
 A organização dos arquivos reflete a divisão das responsabilidades:
 
-IEsporte-Movimento-Inteligente/ ├── ml_models/ │ └── movement_analysis.py # Lógica de Visão Computacional (Python/TensorFlow) ├── api/ │ └── data_service.py # Serviços de acesso a dados (Python) ├── frontend/ │ ├── index.html # Painel Interativo - Interface (HTML) │ ├── css/ │ │ └── tailwind.css # Estilos base │ └── js/ │ └── app.js # Lógica de interatividade e gráficos (JavaScript) └── README.md
+IEsporte-Movimento-Inteligente/ 
+
+├── ml_models/ 
+
+│ └── movement_analysis.py # Lógica de Visão Computacional (Python/TensorFlow) 
+
+├── api/ 
+
+│ └── data_service.py # Serviços de acesso a dados (Python) 
+
+├── frontend/ │ 
+
+├── index.html # Painel Interativo - Interface (HTML) │ 
+
+├── css/ │ 
+
+│ └── tailwind.css # Estilos base 
+
+│ └── js/ 
+
+│ └── app.js # Lógica de interatividade e gráficos (JavaScript) 
+
+└── README.md
 
 ## 📐 Padrão de Projeto Utilizado
 
@@ -101,8 +123,12 @@ Para testar o Painel Interativo e a estrutura de código localmente.
 
 ---
 
-## 👤 Autor
 
-| Nome | Função | GitHub |
+👨‍💻 Autor
+
+Sergio Ademir Rocha do Carmo
+GitHub - SergioCarmo-ro
+
+
 | :--- | :--- | :--- |
 | **Sérgio Ademir Rocha do Carmo** | Desenvolvedor Principal (Frontend, Backend, IA) 
