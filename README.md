@@ -129,6 +129,12 @@ Para testar o Painel Interativo e a estrutura de código localmente.
 Sergio Ademir Rocha do Carmo
 GitHub - SergioCarmo-ro
 
+<<<<<<< HEAD
 | :--- |  (Frontend, Backend)  
 
 | **Sérgio Ademir Rocha do Carmo** 
+=======
+
+| :--- | :--- | :--- |
+| **Sérgio Ademir Rocha do Carmo** | Desenvolvedor Principal (Frontend, Backend, IA) 
+>>>>>>> b88c10b5639d7da0c8a21fb90986e51852237d98
