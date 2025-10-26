@@ -105,3 +105,28 @@ body {
     transform: scale(1.05);
     border-color: #6B8E23;
 }
+
+
+/* --- ESTILOS PARA INTERAÇÃO NO MÓDULO DE EXERCÍCIOS --- */
+
+
+/* Estilo para o botão de filtro ativo, garantindo feedback visual */
+
+.filter-btn.active {
+    /* Cor de fundo mais escura para indicar que está ativo */
+    background-color: #6B8E23;
+    /* Cor do texto branca para alto contraste (Acessibilidade) */
+    color: #FFFFFF;
+    /* Sombra mais pronunciada */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Garante que o hover não se aplique enquanto ativo */
+    pointer-events: none;
+}
+
+
+/* Opcional: Ajuste para o hover em botões inativos */
+
+.filter-btn:not(.active):hover {
+    background-color: #E5E7EB;
+    /* Cor cinza claro para hover */
+}

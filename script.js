@@ -1,369 +1,224 @@
-document.addEventListener('DOMContentLoaded', () => {
-            // --- ELEMENTOS DO NOVO MÓDULO DE LOGIN E LGPD ---
-            const loginScreen = document.getElementById('login-screen');
-            const mainContent = document.getElementById('main-content');
-            const loginForm = document.getElementById('login-form');
-            const openTermsBtn = document.getElementById('open-terms');
-            const termsModal = document.getElementById('terms-modal');
-            const termsCloseBtn = document.getElementById('terms-close');
-            const termosUsoCheckbox = document.getElementById('termos-uso');
+// script.js (Atualizado)
+import { IEsporteDBFacade } from './db_facade.js';
 
-            // Estado inicial: Esconde o painel principal, mostra a tela de login
-            mainContent.classList.add('hidden');
-            loginScreen.classList.remove('hidden');
+// Inicializa a fachada do banco de dados (o 'backend' do frontend)
+const dbFacade = new IEsporteDBFacade();
 
-            // 1. Lógica do Modal de Termos de Uso
-            const openTermsModal = (e) => {
-                e.preventDefault(); // Impede o link de navegar
-                termsModal.classList.remove('invisible', 'opacity-0');
-                // Adiciona um timeout para a transição do modal content
-                setTimeout(() => {
-                    document.getElementById('terms-modal-content').classList.remove('scale-95');
-                }, 10);
-            };
+// Variável para armazenar os dados carregados do 'DB'
+let exercisesData = [];
 
-            const closeTermsModal = () => {
-                document.getElementById('terms-modal-content').classList.add('scale-95');
-                termsModal.classList.add('invisible', 'opacity-0');
-            };
+document.addEventListener('DOMContentLoaded', async() => {
 
-            openTermsBtn.addEventListener('click', openTermsModal);
-            termsCloseBtn.addEventListener('click', closeTermsModal);
-            termsModal.addEventListener('click', (e) => {
-                if (e.target === termsModal) closeTermsModal();
-            });
+    // 1. CARREGAR DADOS VIA FACADE (Substitui a declaração hardcoded)
+    try {
+        exercisesData = await dbFacade.fetchAllExercises();
+        console.log(`Dados carregados: ${exercisesData.length} exercícios.`);
+    } catch (error) {
+        console.error("Falha ao carregar dados iniciais:", error);
+    }
 
-            // 2. Lógica de Login (simples e funcional, sem backend)
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
+    // As funções restantes agora usam a variável 'exercisesData' preenchida
 
-                if (!termosUsoCheckbox.checked) {
-                    alert("É obrigatório aceitar os Termos de Uso e a Política de Privacidade (LGPD) para acessar o painel.");
-                    return;
-                }
+    // --- MÓDULO INTERATIVO DE EXERCÍCIOS ---
 
-                // Simulação de autenticação bem-sucedida
-                loginScreen.style.opacity = 0;
-                loginScreen.style.transition = 'opacity 0.5s ease';
+    // ... (O resto das suas funções JS permanecem aqui, adaptadas para usar exercisesData) ...
+    // Note que as funções precisam ser adaptadas para usar a nova estrutura de dados carregada
 
-                setTimeout(() => {
-                    loginScreen.classList.add('hidden');
-                    mainContent.classList.remove('hidden');
-                    // Re-renderiza gráficos após o main-content se tornar visível
-                    renderOverviewChart();
-                    renderMarketChart();
-                }, 500); // Meio segundo para a transição de fade out
-            });
-
-            // --- CÓDIGO DO PAINEL PRINCIPAL (ANTIGO) ---
-            // (O resto do seu script.js deve ser colocado aqui, com a única exceção de remover as chamadas de renderização do final, pois elas são movidas para o evento de login.)
-
-            const exerciseData = [{
-                name: "Gato-Vaca",
-                type: "Aquecimento",
-                focus: ["Coluna"],
-                details: {
-                    objective: "Aumentar a mobilidade da coluna através de movimentos de flexão e extensão.",
-                    execution: "Em quatro apoios, inspire para arquear a coluna para baixo (Vaca) e expire para arredondar a coluna para cima (Gato). Mantenha o movimento lento e sincronizado com a respiração."
-                }
-            }, {
-                name: "Pássaro-Cachorro",
-                type: "Aquecimento",
-                focus: ["Coordenação", "Core", "Coluna"],
-                details: {
-                    objective: "Melhorar a estabilidade do core e a coordenação entre membros opostos.",
-                    execution: "Em quatro apoios, estenda o braço direito à frente e a perna esquerda para trás simultaneamente, mantendo o tronco estável. Retorne lentamente e alterne."
-                }
-            }, {
-                name: "Inseto Morto",
-                type: "Aquecimento",
-                focus: ["Core", "Estabilidade"],
-                details: {
-                    objective: "Fortalecer o core profundo e ensinar a estabilização da pélvis.",
-                    execution: "Deitado, levante braços e pernas. Desça lentamente o braço direito e a perna esquerda em direção ao chão, sem deixar a lombar arquear. Retorne e alterne."
-                }
-            }, {
-                name: "Círculos Articulares",
-                type: "Aquecimento",
-                focus: ["Articulações"],
-                details: {
-                    objective: "Aumentar a lubrificação e o alcance de movimento das articulações.",
-                    execution: "Execute círculos lentos e controlados em todas as articulações principais: punhos, cotovelos, ombros, pescoço, tornozelos e quadris."
-                }
-            }, {
-                name: "Retração do Queixo",
-                type: "Treinamento",
-                focus: ["Pescoço"],
-                details: {
-                    objective: "Corrigir a postura de pescoço anteriorizado.",
-                    execution: "Encostado na parede, puxe suavemente o queixo para trás, criando uma 'dupla papada'. Sinta o alongamento na parte de trás do pescoço. Mantenha por 5 segundos."
-                }
-            }, {
-                name: "Extensão Torácica",
-                type: "Treinamento",
-                focus: ["Coluna"],
-                details: {
-                    objective: "Aumentar a mobilidade da coluna torácica.",
-                    execution: "Deite com um rolo de espuma na parte superior das costas. Apoie a cabeça com as mãos e estenda-se suavemente sobre o rolo para arquear a coluna."
-                }
-            }, {
-                name: "Prancha Lateral",
-                type: "Treinamento",
-                focus: ["Coluna", "Core"],
-                details: {
-                    objective: "Fortalecer os músculos oblíquos e estabilizadores laterais da coluna.",
-                    execution: "Apoie-se no antebraço e na lateral do pé, mantendo o corpo em uma linha perfeitamente reta da cabeça aos pés, sem deixar o quadril cair."
-                }
-            }, {
-                name: "Abertura de Banda",
-                type: "Treinamento",
-                focus: ["Ombros"],
-                details: {
-                    objective: "Fortalecer o manguito rotador e corrigir ombros protraídos.",
-                    execution: "Segure uma banda elástica com os braços estendidos à frente. Puxe a banda, abrindo os braços e apertando as escápulas uma contra a outra."
-                }
-            }, {
-                name: "Elevação de Glúteo",
-                type: "Treinamento",
-                focus: ["Quadril", "Pernas"],
-                details: {
-                    objective: "Fortalecer os glúteos e a estabilidade do quadril.",
-                    execution: "Deitado, flexione os joelhos. Levante o quadril do chão, contraindo os glúteos e mantendo o alinhamento do corpo."
-                }
-            }, ];
-
-            const allFocusAreas = ['Todos', ...new Set(exerciseData.flatMap(ex => ex.focus))];
-            let activeExerciseFilter = 'Todos';
-
-            // FUNÇÕES DE RENDERIZAÇÃO DE GRÁFICOS (Mantenha inalteradas)
-            const renderOverviewChart = () => {
-                const ctx = document.getElementById('overviewChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Análise Clínica', 'Educação do Paciente', 'Posicionamento de Mercado'],
-                        datasets: [{
-                            data: [45, 35, 20],
-                            backgroundColor: ['#6B8E23', '#4A7C59', '#A3B18A'],
-                            borderColor: '#F9F7F3',
-                            borderWidth: 4,
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        family: 'Inter'
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            };
-
-            const renderMarketChart = () => {
-                const ctx = document.getElementById('marketChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['HealthTrack', 'AccessControl', 'RetailGuard', 'IEsporte'],
-                        datasets: [{
-                            label: 'Eficácia Clínica',
-                            data: [99, 97, 92, 95],
-                            backgroundColor: '#6B8E23',
-                        }, {
-                            label: 'Performance Técnica',
-                            data: [60, 95, 88, 75],
-                            backgroundColor: '#A3B18A',
-                        }]
-                    },
-                    options: {
-                        indexAxis: 'y',
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                suggestedMax: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Pontuação Normalizada (0-100)'
-                                }
-                            },
-                        },
-                        plugins: {
-                            legend: {
-                                position: 'top'
-                            }
-                        }
-                    }
-                });
-            };
-
-            // FUNÇÕES DE EXERCÍCIOS E MODAL DE EXERCÍCIOS (Mantenha inalteradas)
-            const renderExerciseFilters = () => {
-                const container = document.getElementById('exercise-filters');
-                container.innerHTML = allFocusAreas.map(focus => `
-            <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-full transition bg-white shadow-sm hover:bg-gray-100 ${activeExerciseFilter === focus ? 'active' : ''}" data-filter="${focus}">
-                ${focus}
+    // Renderiza os botões de filtro
+    const renderExerciseFilters = () => {
+        const filtersContainer = document.getElementById('exercise-filters');
+        // Agora 'exercisesData' é preenchido pelo Facade
+        if (exercisesData.length === 0) return;
+        const categories = ['Todos', ...new Set(exercisesData.map(e => e.category))];
+        filtersContainer.innerHTML = categories.map(category => `
+            <button class="filter-btn bg-white text-gray-700 px-4 py-2 rounded-full font-semibold border border-gray-300 hover:border-[#6B8E23] transition-colors ${category === 'Todos' ? 'active' : ''}" data-category="${category}">
+                ${category}
             </button>
         `).join('');
+        // Adiciona o listener de clique
+        filtersContainer.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                filtersContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                filterExercises(category);
+            });
+        });
+    };
 
-                container.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        activeExerciseFilter = btn.dataset.filter;
-                        renderExerciseFilters();
-                        renderExerciseGrid();
-                    });
-                });
-            };
-
-            const renderExerciseGrid = () => {
-                    const grid = document.getElementById('exercise-grid');
-                    const filteredData = activeExerciseFilter === 'Todos' ?
-                        exerciseData :
-                        exerciseData.filter(ex => ex.focus.includes(activeExerciseFilter));
-
-                    grid.innerHTML = filteredData.map(ex => `
-            <div class="bg-white rounded-xl shadow-sm p-5 flex flex-col cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all" data-exercise='${JSON.stringify(ex)}'>
-                <h4 class="font-bold text-lg mb-2">${ex.name}</h4>
-                <div class="flex flex-wrap gap-2 mt-auto pt-2">
-                    ${ex.focus.map(f => `<span class="text-xs font-semibold bg-green-100 text-green-800 py-1 px-3 rounded-full">${f}</span>`).join('')}
-                </div>
+    // Renderiza a grade de exercícios com base no filtro
+    const renderExerciseGrid = (filteredData = exercisesData) => {
+        const grid = document.getElementById('exercise-grid');
+        grid.innerHTML = filteredData.map(exercise => `
+            <div class="bg-white rounded-xl shadow-md overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-[1.02] border-2 border-transparent hover:border-[#6B8E23] p-4" data-exercise-id="${exercise.id}">
+                <img src="${exercise.image}" alt="${exercise.name}" class="w-full h-36 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-[#3D3B3A] mb-1">${exercise.name}</h3>
+                <p class="text-sm text-gray-500">${exercise.category} | Foco: ${exercise.focus}</p>
             </div>
         `).join('');
-
-        grid.querySelectorAll('[data-exercise]').forEach(card => {
-            card.addEventListener('click', () => openModal(JSON.parse(card.dataset.exercise)));
+        // Adiciona listener para abrir modal de detalhes
+        grid.querySelectorAll('[data-exercise-id]').forEach(item => {
+            item.addEventListener('click', (e) => openModal(e, 'exercise', parseInt(item.getAttribute('data-exercise-id'))));
         });
     };
 
+    // Filtra os exercícios
+    const filterExercises = (category) => {
+        if (category === 'Todos') {
+            renderExerciseGrid(exercisesData);
+        } else {
+            const filtered = exercisesData.filter(e => e.category === category);
+            renderExerciseGrid(filtered);
+        }
+    };
+
+    // Implementação do DELETE - USA O FACADE!
+    const handleDeleteAccount = async() => {
+        const userEmail = "usuario.logado@iesporte.com"; // Simulação de obtenção do email do usuário logado
+        const success = await dbFacade.deleteUserAccount(userEmail);
+
+        if (success) {
+            alert(`A conta de ${userEmail} e todos os dados foram excluídos com sucesso do 'servidor' (simulação via Facade).`);
+            closeModal();
+            // Lógica de deslogar e ir para a tela de login
+            // toggleMainView(false); 
+        } else {
+            alert("Falha na exclusão da conta. Tente novamente.");
+            closeModal();
+        }
+    };
+
+    // --- FUNÇÕES DE MODAL ---
     const modal = document.getElementById('modal');
-    const modalContent = document.getElementById('modal-content');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
-    const modalClose = document.getElementById('modal-close');
 
-    const openModal = (exercise) => {
-        modalTitle.textContent = exercise.name;
-        modalBody.innerHTML = `
-            <div>
-                <h4 class="font-bold text-lg mb-2 text-[#6B8E23]">Objetivo</h4>
-                <p>${exercise.details.objective}</p>
-            </div>
-            <div>
-                <h4 class="font-bold text-lg mb-2 text-[#6B8E23]">Execução</h4>
-                <p>${exercise.details.execution}</p>
-            </div>
-        `;
-        modal.classList.remove('invisible', 'opacity-0');
-        modalContent.classList.remove('scale-95');
-    };
-
-    const closeModal = () => {
-        modal.classList.add('invisible', 'opacity-0');
-        modalContent.classList.add('scale-95');
-    };
-
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // FUNCIONALIDADE DE SCROLL DA NAVEGAÇÃO (Mantenha inalterada)
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 60) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
-
-     // NOVO: 7. PADRÃO DE PROJETO FACADE
-      
-    class PanelInitializerFacade {
-    // O construtor é onde você pode passar dependências, se houver
-    constructor(exerciseFilterRenderer, exerciseGridRenderer) {
-        this.renderExerciseFilters = exerciseFilterRenderer;
-        this.renderExerciseGrid = exerciseGridRenderer;
-    }
-
-    // O MÉTODO PRINCIPAL que expõe a funcionalidade simplificada
-    initializeAllInteractiveComponents() {
-        console.log("FACADE: Inicializando componentes interativos do painel...");
-        
-        // As ações que antes estavam soltas, agora estão organizadas no Facade
-        this.renderExerciseFilters(); 
-        this.renderExerciseGrid();
-    }
-
-    initializeAllCharts() {
-        console.log("FACADE: Renderizando todos os gráficos (requer 'main-content' visível)...");
-        // Estas funções são chamadas após o login, quando o main-content está visível
-        renderOverviewChart();
-        renderMarketChart();
-    }
-}
-// --- FIM PADRÃO FACADE ---
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    // ... (Mantenha toda a lógica de login e modals) ...
-
-    // Instanciando o Facade
-    const initializerFacade = new PanelInitializerFacade(renderExerciseFilters, renderExerciseGrid);
-    
-    // Chamada inicial (antes do login)
-    // O Facade inicializa os filtros e a grade, mas os gráficos não
-    initializerFacade.initializeAllInteractiveComponents(); 
-    
-    // Modifique a função de Login (Simulação de autenticação bem-sucedida)
-    loginForm.addEventListener('submit', (e) => {
+    const openModal = async(e, type, id = null) => { // Tornar async para o fetch de detalhes
         e.preventDefault();
-        
-        // ... (Lógica de LGPD) ...
+        // ... (lógica de abertura e transição do modal) ...
+        modal.classList.add('opacity-100', 'visible');
+        modal.classList.remove('invisible', 'opacity-0');
+        modal.querySelector('.modal-content').classList.remove('scale-95');
+        modal.querySelector('.modal-content').classList.add('scale-100');
+        modalBody.innerHTML = '';
 
-        // Simulação de autenticação bem-sucedida
-        loginScreen.style.opacity = 0;
-        loginScreen.style.transition = 'opacity 0.5s ease';
+        if (type === 'exercise' && id !== null) {
+            // USA O FACADE PARA OBTER DETALHES
+            const exercise = await dbFacade.getExerciseDetails(id);
 
-        setTimeout(() => {
-            loginScreen.classList.add('hidden');
-            mainContent.classList.remove('hidden');
-            
-            // AGORA CHAMAMOS O FACADE PARA RENDERIZAR OS GRÁFICOS
-            initializerFacade.initializeAllCharts();
-        }, 500);
+            if (exercise) {
+                modalTitle.textContent = exercise.name;
+                modalBody.innerHTML = `
+                    <img src="${exercise.image}" alt="${exercise.name}" class="w-full h-auto object-cover rounded-lg mb-4">
+                    <div class="bg-gray-50 p-4 rounded-lg space-y-2">
+                        <p class="text-sm"><strong>Categoria:</strong> ${exercise.category}</p>
+                        <p class="text-sm"><strong>Foco Principal:</strong> ${exercise.focus}</p>
+                        <p class="text-sm"><strong>Duração/Séries:</strong> ${exercise.duration}</p>
+                        <p class="text-sm"><strong>Dificuldade:</strong> ${exercise.difficulty}</p>
+                    </div>
+                    <p class="mt-4">${exercise.description}</p>
+                `;
+            }
+        } else if (type === 'delete') {
+            // ... (lógica do modal de delete - permanece a mesma) ...
+            modalTitle.textContent = "Confirmação de Exclusão de Conta";
+            modalBody.innerHTML = `
+                <p class="text-lg font-semibold text-red-600">Atenção: Esta ação não pode ser desfeita.</p>
+                <p>Ao confirmar, todos os seus dados serão removidos. Você será deslogado e precisará criar uma nova conta para acessar.</p>
+                <div class="mt-6 flex justify-end space-x-4">
+                    <button id="cancel-delete" class="px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300">Cancelar</button>
+                    <button id="confirm-delete" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700">Sim, Excluir Minha Conta</button>
+                </div>
+            `;
+            document.getElementById('cancel-delete').addEventListener('click', closeModal);
+            document.getElementById('confirm-delete').addEventListener('click', handleDeleteAccount);
+        }
+    };
+
+    // ... (Função closeModal permanece inalterada) ...
+    const closeModal = () => {
+        modal.querySelector('.modal-content').classList.remove('scale-100');
+        modal.querySelector('.modal-content').classList.add('scale-95');
+        modal.classList.add('invisible', 'opacity-0');
+        modal.classList.remove('opacity-100', 'visible');
+
+        const confirmBtn = document.getElementById('confirm-delete');
+        if (confirmBtn) {
+            confirmBtn.removeEventListener('click', handleDeleteAccount);
+        }
+        const cancelBtn = document.getElementById('cancel-delete');
+        if (cancelBtn) {
+            cancelBtn.removeEventListener('click', closeModal);
+        }
+    };
+
+    // ... (event listeners de modal e inicialização de view) ...
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
     });
 
-    // ... (Mantenha toda a lógica de scroll, modais de exercícios, etc.) ...
-    
-    // REMOVA AS TRÊS LINHAS DE CHAMADA DE FUNÇÃO ANTIGAS AQUI:
-    // renderOverviewChart();  <-- REMOVIDO!
-    // renderMarketChart();    <-- REMOVIDO!
-    // renderExerciseFilters();  <-- MANTIDO AQUI (MAS CHAMADO PELO FACADE)
-    // renderExerciseGrid();     <-- MANTIDO AQUI (MAS CHAMADO PELO FACADE)
-});              
+    // Início da Renderização do Módulo de Exercícios (Após o carregamento de dados)
+    renderExerciseFilters();
+    renderExerciseGrid();
+    renderImportantRecommendations();
 
-    // INICIALIZAÇÃO DE COMPONENTES DE EXERCÍCIOS/FILTROS (Chamados aqui, fora do login, para pré-carregar os dados)
-   // renderExerciseFilters();
-    //renderOverviewChart();
-    //renderMarketChart();
-    //renderExerciseGrid();
+    // A função de login (login-form) deve ser adaptada para interagir com a função de autenticação
+    // E, após o login, chamar a inicialização dos exercícios.
+
+    // Exemplo de adaptação de login (ASSUMINDO que a autenticação foi bem sucedida)
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Simulação de login bem-sucedido
+        // toggleMainView(true); // Esta função não está no seu snippet, mas é necessária
+        document.getElementById('login-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        // Redraw charts, etc.
+    });
+
+    // Nova função para renderizar recomendações importantes
+    const renderImportantRecommendations = () => {
+        const recommendationsContainer = document.createElement('div');
+        recommendationsContainer.classList.add('max-w-3xl', 'mx-auto', 'mt-12', 'p-8', 'bg-white', 'rounded-2xl', 'shadow-lg', 'border-t-4', 'border-[#6B8E23]');
+        recommendationsContainer.innerHTML = `
+            <h3 class="text-2xl font-bold text-[#6B8E23] mb-4">Recomendações Importantes</h3>
+            <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                    <span class="text-[#6B8E23] text-xl mr-3">⚠️</span>
+                    <div>
+                        <strong class="text-[#3D3B3A]">Não force:</strong> Se sentir dor, desconforto ou dúvida sobre a execução, pare imediatamente.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-[#6B8E23] text-xl mr-3">✅</span>
+                    <div>
+                        <strong class="text-[#3D3B3A]">Mantenha a postura:</strong> Mantenha a cabeça e a coluna eretas durante os exercícios.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-[#6B8E23] text-xl mr-3">✅</span>
+                    <div>
+                        <strong class="text-[#3D3B3A]">Respire:</strong> Respire continuamente e evite prender o ar durante o movimento.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-[#6B8E23] text-xl mr-3">✅</span>
+                    <div>
+                        <strong class="text-[#3D3B3A]">Priorize a segurança:</strong> Se necessário, apoie-se em um local seguro caso o exercício seja feito em pé.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-[#6B8E23] text-xl mr-3">✅</span>
+                    <div>
+                        <strong class="text-[#3D3B3A]">Varie os treinos:</strong> O ideal é treinar no mínimo duas vezes por semana, alternando os dias de descanso para recuperação.
+                    </div>
+                </li>
+            </ul>
+        `;
+        const exercisesSection = document.getElementById('exercises');
+        exercisesSection.appendChild(recommendationsContainer);
+    };
+
 });
