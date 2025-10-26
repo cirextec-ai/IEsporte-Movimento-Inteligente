@@ -8,8 +8,9 @@
  * Aqui, usamos localStorage como um mock (simulação) do DB.
  */
 class DBHandler {
-    constructor(dbName = 'IESPORTE_EXERCISES') {
+    constructor(dbName = 'IESPORTE_EXERCISES', usersDbName = 'IESPORTE_USERS') {
         this.dbName = dbName;
+        this.usersDbName = usersDbName;
         this._initializeDB();
     }
 
@@ -28,6 +29,9 @@ class DBHandler {
                 { id: 7, name: 'Rotação de Tronco Sentado', category: 'Mobilidade', focus: 'Tronco, Coluna', duration: '3x 5 repetições (cada lado)', difficulty: 'Fácil', description: 'Sentado com a coluna ereta, rotacione suavemente...', image: 'https://res.cloudinary.com/dzxbhjdkj/image/upload/v1761224870/Rota%C3%A7%C3%A3o_de_Tronco_Sentado_rzl0vb.png' }
             ];
             localStorage.setItem(this.dbName, JSON.stringify(initialData));
+        }
+        if (!localStorage.getItem(this.usersDbName)) {
+            localStorage.setItem(this.usersDbName, JSON.stringify([]));
         }
     }
 
@@ -57,8 +61,25 @@ class DBHandler {
     async deleteUserData(email) {
         // Em uma aplicação real, aqui o SQL real de deleção de usuário seria executado
         console.warn(`DBHandler: Excluindo dados do usuário com email: ${email}.`);
-        // Simulação de sucesso da deleção no DB.
+        let users = JSON.parse(localStorage.getItem(this.usersDbName) || '[]');
+        users = users.filter(user => user.email !== email);
+        localStorage.setItem(this.usersDbName, JSON.stringify(users));
         return true;
+    }
+
+    async registerUser(email, password) {
+        let users = JSON.parse(localStorage.getItem(this.usersDbName) || '[]');
+        if (users.find(user => user.email === email)) {
+            return false; // User already exists
+        }
+        users.push({ email, password });
+        localStorage.setItem(this.usersDbName, JSON.stringify(users));
+        return true;
+    }
+
+    async authenticateUser(email, password) {
+        let users = JSON.parse(localStorage.getItem(this.usersDbName) || '[]');
+        return users.find(user => user.email === email && user.password === password);
     }
 }
 
@@ -120,6 +141,38 @@ export class IEsporteDBFacade {
         } catch (error) {
             console.error("Erro no Facade ao excluir conta:", error);
             return false;
+        }
+    }
+
+    /**
+     * OPERAÇÃO 4: Registrar um novo usuário.
+     * @param {string} email - Email do novo usuário.
+     * @param {string} password - Senha do novo usuário.
+     * @returns {Promise<boolean>} Status do registro.
+     */
+    async registerUser(email, password) {
+        console.log(`Facade: Registrando novo usuário com email: ${email}.`);
+        try {
+            return await this.db.registerUser(email, password);
+        } catch (error) {
+            console.error("Erro no Facade ao registrar usuário:", error);
+            return false;
+        }
+    }
+
+    /**
+     * OPERAÇÃO 5: Autenticar um usuário.
+     * @param {string} email - Email do usuário.
+     * @param {string} password - Senha do usuário.
+     * @returns {Promise<Object|null>} O usuário ou null.
+     */
+    async authenticateUser(email, password) {
+        console.log(`Facade: Autenticando usuário com email: ${email}.`);
+        try {
+            return await this.db.authenticateUser(email, password);
+        } catch (error) {
+            console.error("Erro no Facade ao autenticar usuário:", error);
+            return null;
         }
     }
 }
