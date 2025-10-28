@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"previewLimit": 50,
+				"driver": "SQLite",
+				"name": "GuiaTreinamento_DB",
+				"group": "Guia Interativo de Treinamento",
+				"database": "${workspaceFolder:Guia Interativo de Treinamento}/C:\\Users\\Usuario\\IdeaProjects\\Guia Interativo de Treinamento"
+			}
+		],
+		"sqltools.useNodeRuntime": true
+	}
+}

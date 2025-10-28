@@ -8,5 +8,6 @@
             "database": "${workspaceFolder:Guia Interativo de Treinamento}/C:\\Users\\Usuario\\IdeaProjects\\Guia Interativo de Treinamento"
         }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "python.defaultInterpreterPath": "c:\\Users\\Usuario\\IdeaProjects\\Iesporte---Movimento Inteligente\\venv\\Scripts\\python.exe"
 }

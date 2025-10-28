@@ -13,211 +13,226 @@
 
 <body class="antialiased">
 
-    <div id="login-screen" class="fixed inset-0 bg-[#F9F7F3] z-50 flex flex-col items-center justify-center p-4">
-        <div class="w-full max-w-sm bg-white rounded-xl shadow-2xl p-8">
-            <h1 class="text-3xl font-extrabold text-[#3D3B3A] text-center mb-6">
-                Acesso <span class="text-[#6B8E23]">IEsporte</span>
-            </h1>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
 
-            <form id="login-form" class="space-y-4">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Painel Interativo do Projeto IEsporte</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="email" name="email" required class="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-[#6B8E23] focus:border-[#6B8E23] text-[#3D3B3A]" aria-required="true">
-                </div>
+        <link rel="stylesheet" href="style.css">
+    </head>
 
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
-                    <input type="password" id="password" name="password" required class="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-[#6B8E23] focus:border-[#6B8E23] text-[#3D3B3A]" aria-required="true">
-                </div>
+    <body class="antialiased">
 
-                <div class="flex items-start">
-                    <div class="flex items-center h-5">
-                        <input id="termos-uso" name="termos-uso" type="checkbox" required class="focus:ring-[#6B8E23] h-4 w-4 text-[#6B8E23] border-gray-300 rounded" aria-required="true">
+        <div id="login-screen" class="fixed inset-0 bg-[#F9F7F3] z-50 flex flex-col items-center justify-center p-4">
+            <div class="w-full max-w-sm bg-white rounded-xl shadow-2xl p-8">
+                <h1 class="text-3xl font-extrabold text-[#3D3B3A] text-center mb-6">
+                    Acesso <span class="text-[#6B8E23]">IEsporte</span>
+                </h1>
+
+                <form id="login-form" class="space-y-4">
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" required class="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-[#6B8E23] focus:border-[#6B8E23] text-[#3D3B3A]" aria-required="true">
                     </div>
-                    <div class="ml-3 text-sm">
-                        <label for="termos-uso" class="font-medium text-gray-700">Eu li e aceito os 
+
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+                        <input type="password" id="password" name="password" required class="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-[#6B8E23] focus:border-[#6B8E23] text-[#3D3B3A]" aria-required="true">
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            <input id="termos-uso" name="termos-uso" type="checkbox" required class="focus:ring-[#6B8E23] h-4 w-4 text-[#6B8E23] border-gray-300 rounded" aria-required="true">
+                        </div>
+                        <div class="ml-3 text-sm">
+                            <label for="termos-uso" class="font-medium text-gray-700">Eu li e aceito os 
                             <a href="#" id="open-terms" class="text-[#6B8E23] hover:text-[#4A7C59] font-bold underline">Termos de Uso</a>.</label>
+                        </div>
                     </div>
-                </div>
 
-                <button type="submit" id="login-button" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#6B8E23] hover:bg-[#4A7C59] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6B8E23]">
+                    <button type="submit" id="login-button" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#6B8E23] hover:bg-[#4A7C59] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#6B8E23]">
                     Acessar Painel
                 </button>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-    <div id="main-content" class="hidden">
+        <div id="main-content" class="hidden">
 
-        <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
-        </header>
+            <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
+            </header>
 
-        <main class="container mx-auto px-6 py-12">
-        </main>
+            <main class="container mx-auto px-6 py-12">
+            </main>
 
-        <footer class="bg-gray-800 text-white mt-16">
-        </footer>
+            <footer class="bg-gray-800 text-white mt-16">
+            </footer>
 
-        <div id="modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 invisible opacity-0 z-50">
+            <div id="modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 invisible opacity-0 z-50">
+            </div>
+
         </div>
+        <div id="terms-modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 invisible opacity-0 z-50">
+            <div id="terms-modal-content" class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4 border-b pb-3">
+                        <h2 class="text-2xl font-bold text-[#3D3B3A]">Termos de Uso e Política de Privacidade (LGPD)</h2>
+                        <button id="terms-close" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+                    </div>
+                    <div class="text-gray-700 space-y-4 text-sm">
+                        <p><strong>1. Aceitação dos Termos:</strong> Ao utilizar o IEsporte, você concorda integralmente com estes Termos de Uso e nossa Política de Privacidade. Seu acesso está condicionado à leitura e aceite dessas regras.</p>
+                        <p><strong>2. Coleta e Uso de Dados (LGPD):</strong> Coletamos apenas os dados estritamente necessários para a prestação dos serviços (email e histórico de exercícios para fins clínicos). Seus dados são tratados de forma confidencial,
+                            protegidos por criptografia e jamais serão compartilhados com terceiros sem seu consentimento expresso. Você tem o direito de solicitar a exclusão de seus dados a qualquer momento, conforme a Lei Geral de Proteção de Dados.</p>
+                        <p><strong>3. Responsabilidade Clínica:</strong> O IEsporte é uma ferramenta de apoio ao profissional. O diagnóstico, acompanhamento e a responsabilidade clínica final são exclusivos do seu fisioterapeuta.</p>
+                        <p><strong>4. Segurança:</strong> Implementamos medidas de segurança técnicas e administrativas para proteger suas informações de acessos não autorizados e situações acidentais ou ilícitas de destruição, perda, alteração, comunicação
+                            ou difusão.</p>
+                        <p class="text-center font-bold mt-6">Ao clicar em "Eu li e aceito", você confirma que está ciente e concorda com as políticas acima.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
 
-    </div>
-    <div id="terms-modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 invisible opacity-0 z-50">
-        <div id="terms-modal-content" class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95">
+    </body>
+
+    </html>
+
+
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-extrabold text-2xl text-[#3D3B3A]">
+                <span class="text-[#6B8E23]">I</span>Esporte
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#overview" class="nav-link font-semibold text-gray-600">Visão Geral</a>
+                <a href="#exercises" class="nav-link font-semibold text-gray-600">Exercícios</a>
+                <a href="#market" class="nav-link font-semibold text-gray-600">Análise de Mercado</a>
+                <a href="#tech" class="nav-link font-semibold text-gray-600">Tecnologia</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        <section id="hero" class="text-center py-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#3D3B3A] leading-tight">Fisioterapia com Análise de Movimento Inteligente</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">O Projeto IEsporte é uma plataforma digital que capacita fisioterapeutas a realizar diagnósticos precisos e a entregar conteúdo técnico personalizado para acelerar a recuperação de pacientes.</p>
+        </section>
+
+        <section id="overview" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">Visão Geral do Projeto</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                O IEsporte se baseia em três pilares fundamentais. A plataforma integra uma ferramenta de análise clínica para o profissional, um módulo de educação para o paciente, e é posicionada estrategicamente no mercado de health tech. O gráfico abaixo ilustra
+                o foco distribuído entre essas áreas-chave.
+            </p>
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="chart-container donut-chart-container">
+                        <canvas id="overviewChart"></canvas>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-[#6B8E23]">Análise Clínica de Precisão</h3>
+                            <p>Fornece ao fisioterapeuta uma interface para registrar análises técnicas visuais do movimento do paciente, criando um histórico clínico digital e estruturado.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-[#4A7C59]">Educação e Engajamento do Paciente</h3>
+                            <p>Oferece um portal de conteúdo técnico, como guias de exercícios corretivos e materiais educativos, selecionados pelo profissional para orientar o paciente em sua jornada.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-[#A3B18A]">Posicionamento Estratégico</h3>
+                            <p>Utiliza tecnologia de ponta, incluindo aprendizado de máquina e futuras integrações com IA generativa, para se diferenciar no crescente mercado de fisioterapia digital.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercises" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">Módulo Interativo de Exercícios</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                Este é o núcleo da experiência do paciente. O módulo de conteúdo técnico permite explorar exercícios de aquecimento e fortalecimento. Use os filtros para navegar pelo guia e clique em um exercício para ver os detalhes de execução, simulando a funcionalidade
+                principal do aplicativo.
+            </p>
+            <div id="exercise-filters" class="flex justify-center flex-wrap gap-3 mb-8"></div>
+            <div id="exercise-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        </section>
+
+        <section id="market" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">Análise de Mercado Comparativa</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                Para validar nossa abordagem, analisamos projetos similares no mercado. O gráfico abaixo compara o IEsporte com concorrentes em duas dimensões: Eficácia Clínica (precisão e qualidade da análise) e Performance Técnica (velocidade e eficiência do sistema).
+            </p>
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <div class="chart-container bar-chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech" class="py-16">
+            <h2 class="text-3xl font-bold text-center mb-4">Arquitetura e Tecnologia</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+                A plataforma IEsporte é construída sobre uma base tecnológica moderna e escalável, projetada para oferecer uma experiência robusta e segura. O diagrama abaixo resume os principais componentes da nossa arquitetura. Passe o mouse sobre cada item para mais
+                detalhes.
+            </p>
+            <div class="max-w-4xl mx-auto mt-8 p-8 bg-white rounded-2xl shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="tech-stack-item border-2 border-gray-200 rounded-lg p-6 relative group">
+                        <div class="text-4xl mb-3">📱</div>
+                        <h4 class="font-bold text-lg">App Clínico (Mobile)</h4>
+                        <p class="text-sm text-gray-500">Kotlin Nativo</p>
+                        <div class="absolute bottom-full mb-2 w-60 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Aplicativo Android para fisioterapeutas inserirem dados clínicos.
+                        </div>
+                    </div>
+                    <div class="tech-stack-item border-2 border-gray-200 rounded-lg p-6 relative group">
+                        <div class="text-4xl mb-3">🧠</div>
+                        <h4 class="font-bold text-lg">Análise IA (Backend)</h4>
+                        <p class="text-sm text-gray-500">Python + TensorFlow</p>
+                        <div class="absolute bottom-full mb-2 w-60 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Modelo de Machine Learning para futuras análises automáticas de movimento.
+                        </div>
+                    </div>
+                    <div class="tech-stack-item border-2 border-gray-200 rounded-lg p-6 relative group">
+                        <div class="text-4xl mb-3">💬</div>
+                        <h4 class="font-bold text-lg">IA Generativa (Serviços)</h4>
+                        <p class="text-sm text-gray-500">Gemini API</p>
+                        <div class="absolute bottom-full mb-2 w-60 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Integração para gerar resumos de progresso e insights para pacientes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="font-bold text-lg">Projeto IEsporte</p>
+            <p class="text-sm text-gray-400 mt-2">&copy; 2025 | Inovação em Fisioterapia Digital</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 invisible opacity-0 z-50">
+        <div id="modal-content" class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95">
             <div class="p-8">
-                <div class="flex justify-between items-start mb-4 border-b pb-3">
-                    <h2 class="text-2xl font-bold text-[#3D3B3A]">Termos de Uso e Política de Privacidade (LGPD)</h2>
-                    <button id="terms-close" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modal-title" class="text-2xl font-bold text-[#3D3B3A]"></h2>
+                    <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
                 </div>
-                <div class="text-gray-700 space-y-4 text-sm">
-                    <p><strong>1. Aceitação dos Termos:</strong> Ao utilizar o IEsporte, você concorda integralmente com estes Termos de Uso e nossa Política de Privacidade. Seu acesso está condicionado à leitura e aceite dessas regras.</p>
-                    <p><strong>2. Coleta e Uso de Dados (LGPD):</strong> Coletamos apenas os dados estritamente necessários para a prestação dos serviços (email e histórico de exercícios para fins clínicos). Seus dados são tratados de forma confidencial,
-                        protegidos por criptografia e jamais serão compartilhados com terceiros sem seu consentimento expresso. Você tem o direito de solicitar a exclusão de seus dados a qualquer momento, conforme a Lei Geral de Proteção de Dados.</p>
-                    <p><strong>3. Responsabilidade Clínica:</strong> O IEsporte é uma ferramenta de apoio ao profissional. O diagnóstico, acompanhamento e a responsabilidade clínica final são exclusivos do seu fisioterapeuta.</p>
-                    <p><strong>4. Segurança:</strong> Implementamos medidas de segurança técnicas e administrativas para proteger suas informações de acessos não autorizados e situações acidentais ou ilícitas de destruição, perda, alteração, comunicação
-                        ou difusão.</p>
-                    <p class="text-center font-bold mt-6">Ao clicar em "Eu li e aceito", você confirma que está ciente e concorda com as políticas acima.</p>
-                </div>
+                <div id="modal-body" class="text-gray-700 space-y-6"></div>
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
-
-</body>
-
-</html>
-
-
-
-<header class="bg-white/80 backdrop-blur-lg sticky top-0 z-40 shadow-sm">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="font-extrabold text-2xl text-[#3D3B3A]">
-            <span class="text-[#6B8E23]">I</span>Esporte
-        </div>
-        <div class="hidden md:flex items-center space-x-8">
-            <a href="#overview" class="nav-link font-semibold text-gray-600">Visão Geral</a>
-            <a href="#exercises" class="nav-link font-semibold text-gray-600">Exercícios</a>
-            <a href="#market" class="nav-link font-semibold text-gray-600">Análise de Mercado</a>
-            <a href="#tech" class="nav-link font-semibold text-gray-600">Tecnologia</a>
-        </div>
-    </nav>
-</header>
-
-<main class="container mx-auto px-6 py-12">
-    <section id="hero" class="text-center py-16">
-        <h1 class="text-4xl md:text-6xl font-extrabold text-[#3D3B3A] leading-tight">Fisioterapia com Análise de Movimento Inteligente</h1>
-        <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">O Projeto IEsporte é uma plataforma digital que capacita fisioterapeutas a realizar diagnósticos precisos e a entregar conteúdo técnico personalizado para acelerar a recuperação de pacientes.</p>
-    </section>
-
-    <section id="overview" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-4">Visão Geral do Projeto</h2>
-        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-            O IEsporte se baseia em três pilares fundamentais. A plataforma integra uma ferramenta de análise clínica para o profissional, um módulo de educação para o paciente, e é posicionada estrategicamente no mercado de health tech. O gráfico abaixo ilustra
-            o foco distribuído entre essas áreas-chave.
-        </p>
-        <div class="bg-white rounded-2xl shadow-lg p-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="chart-container donut-chart-container">
-                    <canvas id="overviewChart"></canvas>
-                </div>
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-[#6B8E23]">Análise Clínica de Precisão</h3>
-                        <p>Fornece ao fisioterapeuta uma interface para registrar análises técnicas visuais do movimento do paciente, criando um histórico clínico digital e estruturado.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-[#4A7C59]">Educação e Engajamento do Paciente</h3>
-                        <p>Oferece um portal de conteúdo técnico, como guias de exercícios corretivos e materiais educativos, selecionados pelo profissional para orientar o paciente em sua jornada.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl mb-2 text-[#A3B18A]">Posicionamento Estratégico</h3>
-                        <p>Utiliza tecnologia de ponta, incluindo aprendizado de máquina e futuras integrações com IA generativa, para se diferenciar no crescente mercado de fisioterapia digital.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="exercises" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-4">Módulo Interativo de Exercícios</h2>
-        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-            Este é o núcleo da experiência do paciente. O módulo de conteúdo técnico permite explorar exercícios de aquecimento e fortalecimento. Use os filtros para navegar pelo guia e clique em um exercício para ver os detalhes de execução, simulando a funcionalidade
-            principal do aplicativo.
-        </p>
-        <div id="exercise-filters" class="flex justify-center flex-wrap gap-3 mb-8"></div>
-        <div id="exercise-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-    </section>
-
-    <section id="market" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-4">Análise de Mercado Comparativa</h2>
-        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-            Para validar nossa abordagem, analisamos projetos similares no mercado. O gráfico abaixo compara o IEsporte com concorrentes em duas dimensões: Eficácia Clínica (precisão e qualidade da análise) e Performance Técnica (velocidade e eficiência do sistema).
-        </p>
-        <div class="bg-white rounded-2xl shadow-lg p-8">
-            <div class="chart-container bar-chart-container">
-                <canvas id="marketChart"></canvas>
-            </div>
-        </div>
-    </section>
-
-    <section id="tech" class="py-16">
-        <h2 class="text-3xl font-bold text-center mb-4">Arquitetura e Tecnologia</h2>
-        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-            A plataforma IEsporte é construída sobre uma base tecnológica moderna e escalável, projetada para oferecer uma experiência robusta e segura. O diagrama abaixo resume os principais componentes da nossa arquitetura. Passe o mouse sobre cada item para mais
-            detalhes.
-        </p>
-        <div class="max-w-4xl mx-auto mt-8 p-8 bg-white rounded-2xl shadow-lg">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div class="tech-stack-item border-2 border-gray-200 rounded-lg p-6 relative group">
-                    <div class="text-4xl mb-3">📱</div>
-                    <h4 class="font-bold text-lg">App Clínico (Mobile)</h4>
-                    <p class="text-sm text-gray-500">Kotlin Nativo</p>
-                    <div class="absolute bottom-full mb-2 w-60 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Aplicativo Android para fisioterapeutas inserirem dados clínicos.
-                    </div>
-                </div>
-                <div class="tech-stack-item border-2 border-gray-200 rounded-lg p-6 relative group">
-                    <div class="text-4xl mb-3">🧠</div>
-                    <h4 class="font-bold text-lg">Análise IA (Backend)</h4>
-                    <p class="text-sm text-gray-500">Python + TensorFlow</p>
-                    <div class="absolute bottom-full mb-2 w-60 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Modelo de Machine Learning para futuras análises automáticas de movimento.
-                    </div>
-                </div>
-                <div class="tech-stack-item border-2 border-gray-200 rounded-lg p-6 relative group">
-                    <div class="text-4xl mb-3">💬</div>
-                    <h4 class="font-bold text-lg">IA Generativa (Serviços)</h4>
-                    <p class="text-sm text-gray-500">Gemini API</p>
-                    <div class="absolute bottom-full mb-2 w-60 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Integração para gerar resumos de progresso e insights para pacientes.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer class="bg-gray-800 text-white mt-16">
-    <div class="container mx-auto px-6 py-8 text-center">
-        <p class="font-bold text-lg">Projeto IEsporte</p>
-        <p class="text-sm text-gray-400 mt-2">&copy; 2025 | Inovação em Fisioterapia Digital</p>
-    </div>
-</footer>
-
-<div id="modal" class="modal fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 invisible opacity-0 z-50">
-    <div id="modal-content" class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95">
-        <div class="p-8">
-            <div class="flex justify-between items-start mb-4">
-                <h2 id="modal-title" class="text-2xl font-bold text-[#3D3B3A]"></h2>
-                <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
-            </div>
-            <div id="modal-body" class="text-gray-700 space-y-6"></div>
-        </div>
-    </div>
-</div>
-
-<script src="script.js"></script>
 
 </body>
 
