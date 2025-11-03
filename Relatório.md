@@ -10,8 +10,6 @@ Aluno: Sergio Ademir Rocha do Carmo
 Professor: Andrey Rodrigues  
 Refatoração de Software  
 
----
-
 # Relatório de Refatoração do Projeto: IEsporte - Movimento Inteligente
 
 ## Resumo das Refatorações
