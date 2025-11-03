@@ -131,6 +131,7 @@ Git (para clonar o repositório)
 Git Bash ou terminal compatível (Windows/Linux/Mac)
 
 Passo 1: Clonar o Repositório
+
 bash
 cd ~/IdeaProjects
 
@@ -148,7 +149,9 @@ source .venv/Scripts/activate
 Linux/Mac:
 
 bash
+
 python3 -m venv .venv
+
 source .venv/bin/activate
 Passo 3: Instalar Dependências
 bash
@@ -157,6 +160,7 @@ Ou, se houver arquivo requirements.txt:
 
 bash
 pip install -r requirements.txt
+
 Passo 4: Configurar o Banco de Dados
 Entre na pasta correta do projeto:
 
@@ -168,6 +172,7 @@ bash
 python manage.py makemigrations
 
 python manage.py migrate
+
 Passo 5: Criar Superusuário (Opcional)
 Para acessar o painel administrativo do Django:
 
@@ -176,6 +181,7 @@ python manage.py createsuperuser
 Preencha email, usuário e senha quando solicitado.
 
 Passo 6: Rodar o Servidor de Desenvolvimento
+
 bash
 python manage.py runserver
 Saída esperada:
@@ -189,11 +195,13 @@ November 03, 2025 - 03:43:00
 Django version 5.2.7, using settings 'iesporte.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
+
 Passo 7: Acessar o Sistema
 Abra o navegador e acesse:
 
 text
 http://127.0.0.1:8000/
+
 Passo 8: Testar Funcionalidades
 Criar Conta:
 
@@ -244,12 +252,19 @@ django.views.decorators.http	Decoradores de métodos HTTP
 json	Manipulação de dados JSON
 Estrutura do Ambiente Virtual
 bash
+
 .venv/                          # Ambiente virtual Python
+
 ├── Lib/site-packages/
+
 │   ├── django/                 # Django framework
+
 │   ├── sqlparse/               # Parser SQL (dependência do Django)
+
 │   ├── asgiref/                # ASGI server (dependência do Django)
+
 │   └── tzdata/                 # Dados de fuso horário
+
 Arquivo requirements.txt (Sugerido)
 text
 Django==5.2.7
@@ -274,31 +289,23 @@ Git Bash	Terminal Unix-like no Windows
 
 * **Para o Módulo de IA (Desenvolvimento Futuro):** Python (3.9+), `tensorflow`, `opencv-python`.
 
-
 ### ⚠️ Observações Importantes
 
 * A visualização do Painel Interativo (`index.html`) já é totalmente funcional e interativa, usando dados embutidos no JavaScript (Vanilla + Chart.js).
 * A integração da análise de movimento em tempo real e a persistência de dados em SQL são funcionalidades planejadas que exigem a configuração do ambiente Python e dos servidores de banco de dados.
 
----
-
 ## 🟢 Status do Projeto
 
 | Status | Detalhe |
 | :--- | :--- |
-| **Protótipo de Painel Interativo** | **Completo e funcional** (Frontend/SPA). |
+| **Protótipo de Painel Interativo** 
+| **Completo e funcional** (Frontend/SPA). |
 | **Módulo de Análise IA** | Em fase de **definição de arquitetura** e desenvolvimento do modelo. |
 | **Próximos Passos** | Implementar a comunicação em tempo real entre o modelo de visão computacional (Python/TensorFlow) e a interface web. |
-
----
 
 👨‍💻 Autor
 
 Sergio Ademir Rocha do Carmo
-GitHub - https://github.com/SergioCarmo-ro/IEsporte-Movimento-Inteligente
-
-<<<<<<< HEAD
-| :--- |  (Frontend, Backend)  
+GitHub - https://github.com/SergioCarmo-ro/IEsporte-Movimento-Inteligente  
 
 | **Sérgio Ademir Rocha do Carmo** | Desenvolvedor Principal (Frontend, Backend, IA) 
->>>>>>> b88c10b5639d7da0c8a21fb90986e51852237d98
