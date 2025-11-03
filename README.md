@@ -35,30 +35,55 @@ A arquitetura do IEsporte é desenhada para ser modular, permitindo a separaçã
 A organização dos arquivos reflete a divisão das responsabilidades:
 
 Iesporte_Movimento_Inteligente/
+
 ├── .venv/                        # Ambiente virtual Python
+
 ├── iesporte/
+
 │   ├── manage.py                 # Comando principal do Django
+
 │   ├── db.sqlite3                # Banco de dados SQLite
+
 │   ├── iesporte/                 # Configuração do projeto Django
+
 │   │   ├── __init__.py
+
 │   │   ├── settings.py           # Configurações principais
+
 │   │   ├── urls.py               # Rotas principais
+
 │   │   └── wsgi.py
+
 │   ├── esporte_app/              # App principal do projeto
+
 │   │   ├── __init__.py
+
 │   │   ├── admin.py
+
 │   │   ├── apps.py
+
 │   │   ├── models.py
+
 │   │   ├── views.py              # Controladores (lógica das rotas)
+
 │   │   ├── urls.py               # Rotas do app
+
 │   │   ├── facade.py             # Facade com lógica centralizada
+
 │   │   └── migrations/           # Migrações do banco de dados
+
 │   ├── templates/
+
 │   │   └── index.html            # Template HTML principal
+
 │   └── static/
+
 │       ├── css/
+
 │       │   └── style.css         # Arquivo de estilos
+
 │       └── js/
+
 │           └── script.js         # JS das interações
 
 
