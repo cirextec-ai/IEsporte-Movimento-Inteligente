@@ -2,11 +2,11 @@
 
 ![Banner do Projeto IEsporte - Movimento Inteligente](https://placehold.co/800x200/6B8E23/ffffff?text=IEsporte+-+An%C3%A1lise+de+Movimento+Inteligente)
 
+
 ## 🎯 Descrição Breve do Sistema
 
 O **IEsporte - Movimento Inteligente** é um protótipo de plataforma digital focada em **fisioterapia** e **análise clínica de movimento**. O sistema visa capacitar fisioterapeutas com ferramentas para diagnóstico preciso e fornecer aos pacientes um guia interativo de exercícios corretivos. O projeto utiliza o poder do Python para lógica de Machine Learning (TensorFlow/visão computacional) e a tríade web (HTML, CSS, JavaScript) para uma interface de usuário dinâmica e acessível.
 
----
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -21,7 +21,6 @@ Este projeto integra tecnologias de frontend, backend e inteligência artificial
 | **Modelo de IA** | TensorFlow (Visão Computacional) | |
 | **Base de Dados** | Ferramentas SQL (SQL Tools) | |
 
----
 
 ## 🏗️ Arquitetura Resumida
 
