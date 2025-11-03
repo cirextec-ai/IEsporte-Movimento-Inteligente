@@ -266,7 +266,7 @@ Git Bash	Terminal Unix-like no Windows
 👨‍💻 Autor
 
 Sergio Ademir Rocha do Carmo
-GitHub - 
+GitHub - https://github.com/SergioCarmo-ro/IEsporte-Movimento-Inteligente
 
 <<<<<<< HEAD
 | :--- |  (Frontend, Backend)  
