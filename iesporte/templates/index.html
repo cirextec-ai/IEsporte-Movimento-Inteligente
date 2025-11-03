@@ -1,0 +1,286 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEsporte - Movimento Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+        .auth-container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .error {
+            background: #fee;
+            color: #c00;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .success {
+            background: #efe;
+            color: #060;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .exercise-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .exercise-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+        .exercise-card.expanded {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+        }
+        .exercise-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .exercise-details.show {
+            max-height: 1000px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .badge-aquecimento {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .badge-treinamento {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .badge-foco {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+        .exercise-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+        .expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #667eea; margin-bottom: 0.5rem; font-size: 2.5rem;">
+            🏃 IEsporte
+        </h1>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">
+            Seu movimento, nossa ciência
+        </p>
+
+        {% if error %}
+        <div class="error">
+            ❌ {{ error }}
+        </div>
+        {% endif %}
+
+        {% if user_authenticated %}
+        <!-- ÁREA LOGADA - EXERCÍCIOS -->
+        <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div class="success" style="margin: 0; flex: 1;">
+                ✅ Bem-vindo, <strong>{{ user.email }}</strong>!
+            </div>
+            <form method="POST" action="{% url 'logout' %}" style="margin-left: 1rem;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary">Sair</button>
+            </form>
+        </div>
+
+        <h2 style="color: #334155; margin-bottom: 1.5rem; font-size: 1.75rem;">
+            📋 Seus Exercícios (clique para ver detalhes)
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem;">
+            {% for exercicio in exercicios %}
+            <div class="exercise-card" onclick="toggleExercise({{ forloop.counter0 }})">
+                <!-- Cabeçalho do Card -->
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="color: #667eea; margin: 0; font-size: 1.25rem;">
+                        {{ exercicio.nome }}
+                    </h3>
+                    <svg class="expand-icon" width="24" height="24" fill="none" stroke="#667eea" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </div>
+                
+                <div style="margin-top: 0.75rem;">
+                    <span class="badge badge-{{ exercicio.tipo|lower }}">
+                        {{ exercicio.tipo }}
+                    </span>
+                    {% for area in exercicio.foco %}
+                    <span class="badge badge-foco">{{ area }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Detalhes Expandíveis -->
+                <div class="exercise-details" id="exercise-{{ forloop.counter0 }}">
+                    {% if exercicio.imagem %}
+                    <img src="{{ exercicio.imagem }}" alt="{{ exercicio.nome }}" class="exercise-image">
+                    {% endif %}
+
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #e2e8f0;">
+                        <strong style="color: #667eea; font-size: 1rem;">💡 Objetivo:</strong>
+                        <p style="margin: 0.5rem 0; color: #475569; line-height: 1.6;">{{ exercicio.objetivo }}</p>
+                    </div>
+
+                    <div style="margin-top: 1rem;">
+                        <strong style="color: #667eea; font-size: 1rem;">🎯 Como Executar:</strong>
+                        <p style="margin: 0.5rem 0; color: #475569; line-height: 1.6;">{{ exercicio.execucao }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+        <!-- FORMULÁRIOS DE LOGIN/CADASTRO -->
+        <div class="auth-container">
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h2 style="margin-bottom: 1rem; color: #334155;">Login</h2>
+                
+                <input 
+                    type="email" 
+                    name="email" 
+                    class="form-control" 
+                    placeholder="Email" 
+                    required
+                >
+                
+                <input 
+                    type="password" 
+                    name="password" 
+                    class="form-control" 
+                    placeholder="Senha" 
+                    required
+                >
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Entrar
+                </button>
+            </form>
+
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e2e8f0;">
+
+            <form method="POST" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <h2 style="margin-bottom: 1rem; color: #334155;">Criar Conta</h2>
+                
+                <input 
+                    type="email" 
+                    name="email" 
+                    class="form-control" 
+                    placeholder="Email" 
+                    required
+                >
+                
+                <input 
+                    type="password" 
+                    name="password" 
+                    class="form-control" 
+                    placeholder="Senha (mín. 6 caracteres)" 
+                    required
+                    minlength="6"
+                >
+                
+                <label style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <input 
+                        type="checkbox" 
+                        name="aceite_termos" 
+                        required
+                        style="margin-right: 0.5rem;"
+                    >
+                    Aceito os termos de uso
+                </label>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    Cadastrar
+                </button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function toggleExercise(index) {
+            const card = event.currentTarget;
+            const details = document.getElementById('exercise-' + index);
+            
+            // Toggle classes
+            card.classList.toggle('expanded');
+            details.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

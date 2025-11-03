@@ -9,5 +9,5 @@
         }
     ],
     "sqltools.useNodeRuntime": true,
-    "python.defaultInterpreterPath": "c:\\Users\\Usuario\\IdeaProjects\\Iesporte---Movimento Inteligente\\venv\\Scripts\\python.exe"
+    "python.defaultInterpreterPath": "c:\\Users\\Usuario\\IdeaProjects\\Iesporte_Movimento_Inteligente\\venv\\Scripts\\python.exe"
 }
