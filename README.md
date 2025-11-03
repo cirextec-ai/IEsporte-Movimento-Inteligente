@@ -133,9 +133,13 @@ Git Bash ou terminal compatível (Windows/Linux/Mac)
 Passo 1: Clonar o Repositório
 bash
 cd ~/IdeaProjects
+
 git clone https://github.com/SergioCarmo-ro/IEsporte-Movimento-Inteligente.git
+
 cd IEsporte-Movimento-Inteligente
+
 Passo 2: Criar e Ativar o Ambiente Virtual
+
 Windows (Git Bash):
 
 bash
@@ -162,6 +166,7 @@ Execute as migrações:
 
 bash
 python manage.py makemigrations
+
 python manage.py migrate
 Passo 5: Criar Superusuário (Opcional)
 Para acessar o painel administrativo do Django:
