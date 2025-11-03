@@ -1,8 +1,27 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
-# faça um relatório curto em formato Markdown (relatorio.md),
+<table width="100%">
+<tr>
+<td width="20%" align="left">
 
-Aqui está um exemplo de relatório sucinto no formato Markdown (`relatorio.md`) para seu projeto **IEsporte - Movimento Inteligente**:
+
+**UNIVERSIDADE FEDERAL DO AMAZONAS**  
+**INSTITUTO DE CIÊNCIAS EXATAS E TECNOLOGIA**  
+**ENGENHARIA DE SOFTWARE**  
+**MANUTENÇÃO E INTEGRAÇÃO DE SOFTWARE**  
+**SEMESTRE 2025-2**  
+
+Aluno: Sergio Ademir Rocha do Carmo  
+Professor: Andrey Rodrigues  
+Refatoração de Software  
+
+# Relatório do Projeto: IEsporte - Movimento Inteligente
+
+<!-- (aqui segue o restante do relatório já gerado, pode colar tudo logo abaixo) -->
+
+
+#  Relatório Markdown (relatorio.md),
+
+Projeto **IEsporte - Movimento Inteligente**:
 
 ***
 
