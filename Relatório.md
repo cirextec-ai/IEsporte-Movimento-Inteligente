@@ -49,7 +49,7 @@ Foram aplicadas as seguintes refatorações do catálogo de Martin Fowler:
 
 ---
 
-## Considerações Finais
+## Considerações
 
 A refatoração trouxe maior organização e robustez ao projeto, tornando o código mais profissional e alinhado a boas práticas reconhecidas. O uso do padrão Facade e das boas práticas do design expressas por Martin Fowler garantem que o sistema esteja pronto para futuras evoluções com baixo custo de manutenção.
 
