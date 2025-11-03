@@ -76,24 +76,22 @@ Organização estrutural das pastas (templates, static, facade) para seguir boas
 
 ## Principais Aprendizados e Dificuldades
 
- ## O que podemos aprender 
+## O que podemos aprender 
  
-    - Refatoração sistemática torna o sistema mais limpo, preparado para crescimento, e fácil de entender por outros desenvolvedores.
-    - O padrão Facade é excelente para centralizar regras compartilhadas em múltiplas views.
-    - Separar dados de apresentação (templates) dos dados de negócio (facade) simplifica muito o código.
+ Refatoração sistemática torna o sistema mais limpo, preparado para crescimento, e fácil de entender por outros desenvolvedores.
+ O padrão Facade é excelente para centralizar regras compartilhadas em múltiplas views.
+ Separar dados de apresentação (templates) dos dados de negócio (facade) simplifica muito o código.
 
 ## Dificuldades
-    - Alguns ajustes em type hints não são compatíveis com versões específicas do Python/Django, sendo necessário adaptar para evitar erros de sintaxe.
-    - Ajustar caminhos do projeto e referências de templates e estáticos demanda atenção para evitar 404 e erros de contexto.
-    - Garantir que todo o fluxo (cadastro, login, logout, exibição de exercícios) permaneça funcional mesmo após grandes refatorações.
 
----
+Alguns ajustes em type hints não são compatíveis com versões específicas do Python/Django, sendo necessário adaptar para evitar erros de sintaxe.
+Ajustar caminhos do projeto e referências de templates e estáticos demanda atenção para evitar 404 e erros de contexto.
+Garantir que todo o fluxo (cadastro, login, logout, exibição de exercícios) permaneça funcional mesmo após grandes refatorações.
 
 ## Considerações
 
 A refatoração trouxe maior organização e robustez ao projeto, tornando o código mais profissional e alinhado a boas práticas reconhecidas. O uso do padrão Facade e das boas práticas do design expressas por Martin Fowler garantem que o sistema esteja pronto para futuras evoluções com baixo custo de manutenção.
 
----
 
 *Manaus, 03 de novembro de 2025*
 
