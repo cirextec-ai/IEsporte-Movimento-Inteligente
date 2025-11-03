@@ -35,7 +35,7 @@ Foram aplicadas as seguintes refatorações do catálogo de Martin Fowler:
 - [facade.py: Implementação das classes Facade](https://github.com/SergioCarmo-ro/IEsporte-Movimento-Inteligente/blob/main/iesporte/esporte_app/facade.py)
 - [index.html: Template desacoplado, recebendo contexto simplificado](https://github.com/SergioCarmo-ro/IEsporte-Movimento-Inteligente/blob/main/iesporte/templates/index.html)
 
-> ***Substitua os links acima pelo caminho real do seu repositório, caso diferentes.***
+> 
 
 ## Principais Aprendizados e Dificuldades
 
