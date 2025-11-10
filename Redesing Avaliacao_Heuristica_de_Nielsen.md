@@ -3,7 +3,7 @@
 ### Aluno: Sergio Ademir Rocha do Carmo 
 ### Professor Dr.: Andrey Rodrigues 
 
-**“📊 Avaliação Heurística de Nielsen”** refeito manualmente em um formato Markdown (.md) limpo, legível e pronto para uso em GitHub, Notion ou relatórios técnicos:
+**“📊 Avaliação Heurística de Nielsen”**  relatório técnico:
 
 
 # 📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)
