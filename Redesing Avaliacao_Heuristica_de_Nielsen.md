@@ -3,8 +3,7 @@
 ### Aluno: Sergio Ademir Rocha do Carmo 
 ### Professor Dr.: Andrey Rodrigues 
 
-Perfeito ✅
-Aqui está o conteúdo do seu documento **“📊 Avaliação Heurística de Nielsen”** refeito manualmente em um formato Markdown (.md) limpo, legível e pronto para uso em GitHub, Notion ou relatórios técnicos:
+**“📊 Avaliação Heurística de Nielsen”** refeito manualmente em um formato Markdown (.md) limpo, legível e pronto para uso em GitHub, Notion ou relatórios técnicos:
 
 ---
 
@@ -85,9 +84,5 @@ As próximas etapas de refinamento visam consolidar a experiência do usuário e
 
 ---
 ```
-
----
-
-Deseja que eu adicione **formatação visual extra** (como emojis, cores via HTML, ou estilo GitHub-flavored Markdown)? Isso pode deixar o arquivo mais agradável para portfólio ou apresentação.
  
   -------------------------------------------------------------------------
