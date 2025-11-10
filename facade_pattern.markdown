@@ -27,20 +27,4 @@ No projeto, criamos uma única classe Facade chamada `PanelInitializerFacade` qu
 
 ## 📊 Diagrama UML do Padrão Facade
 
-```plaintext
-+---------------------------------+
-|       PanelInitializerFacade     |
-+---------------------------------+
-| + initializePanel()             |
-+---------------------------------+
-                |
-                | uses
-                |
-+---------------------------------+
-|         Subsistema              |
-| + renderOverviewChart()         |
-| + renderMarketChart()           |
-| + renderExerciseFilters()       |
-| + manageModals()                |
-+---------------------------------+
-```
+![generated-image](https://github.com/user-attachments/assets/c6959e41-dd94-419b-b6e4-6444f0b6e8b5)
