@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco - IEsporte</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+        /* Classe para destacar a aba ativa */
+        .tab-active {
+            border-bottom: 3px solid #4f46e5; /* indigo-600 */
+            color: #4f46e5;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-4xl font-extrabold text-center text-slate-800 mb-4">
+            ❓ Central de Ajuda e Fale Conosco
+        </h1>
+        <p class="text-center text-gray-600 mb-10 text-lg">
+            Escolha o tópico abaixo para obter o melhor suporte.
+        </p>
+
+        <div class="border-b border-gray-200 mb-8">
+            <nav class="-mb-px flex space-x-8 justify-center" aria-label="Tabs">
+                <a href="#" onclick="showTab('suporte', event)" id="tab-suporte" class="tab-active py-4 px-1 text-gray-500 hover:text-indigo-600 transition duration-300">Suporte Técnico</a>
+                <a href="#" onclick="showTab('parceria', event)" id="tab-parceria" class="py-4 px-1 text-gray-500 hover:text-indigo-600 transition duration-300">Parcerias e Mídia</a>
+                <a href="#" onclick="showTab('institucional', event)" id="tab-institucional" class="py-4 px-1 text-gray-500 hover:text-indigo-600 transition duration-300">Sobre o IEsporte</a>
+            </nav>
+        </div>
+
+        <div id="content-suporte" class="space-y-6 p-6 border-2 border-indigo-100 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-indigo-700">Dúvidas Técnicas ou Problemas na Conta</h2>
+            <p class="text-gray-700">Se você está enfrentando dificuldades de acesso, bugs ou problemas com seu plano de exercícios, use nosso canal direto de suporte:</p>
+            
+            <div class="bg-white p-4 rounded-lg shadow space-y-3">
+                <p class="flex items-center text-lg text-gray-800 font-semibold">
+                    <span class="mr-3 text-indigo-600">📧</span>
+                    Email: <a href="mailto:suporte@iesporte.com" class="ml-2 text-indigo-600 hover:underline">suporte@iesporte.com</a>
+                </p>
+                <p class="text-sm text-gray-500 pl-8">Resposta garantida em até 24 horas úteis.</p>
+            </div>
+            
+            <button class="px-5 py-2.5 rounded bg-indigo-500 text-white font-semibold hover:bg-indigo-600 transition">
+                Acessar FAQ (Perguntas Frequentes)
+            </button>
+        </div>
+
+        <div id="content-parceria" class="hidden space-y-6 p-6 border-2 border-purple-100 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-purple-700">Colaboração e Propostas Comerciais</h2>
+            <p class="text-gray-700">Interessado em fazer uma parceria, publicidade ou cobrir o IEsporte na mídia? Entre em contato com nossa equipe de negócios:</p>
+            
+            <div class="bg-white p-4 rounded-lg shadow space-y-3">
+                <p class="flex items-center text-lg text-gray-800 font-semibold">
+                    <span class="mr-3 text-purple-600">🤝</span>
+                    Email: <a href="mailto:parcerias@iesporte.com" class="ml-2 text-purple-600 hover:underline">parcerias@iesporte.com</a>
+                </p>
+                <p class="text-sm text-gray-500 pl-8">Detalhe sua proposta e entraremos em contato.</p>
+            </div>
+            
+            <button class="px-5 py-2.5 rounded bg-purple-500 text-white font-semibold hover:bg-purple-600 transition">
+                Ver Kit de Mídia
+            </button>
+        </div>
+
+        <div id="content-institucional" class="hidden space-y-6 p-6 border-2 border-gray-100 rounded-xl shadow-lg">
+            <h2 class="text-2xl font-bold text-slate-700">Nossa Missão e Valores</h2>
+            <p class="text-gray-700">O IEsporte acredita que a tecnologia deve ser uma aliada do movimento e do bem-estar. Saiba mais sobre nossa história, a equipe e os princípios que nos guiam.</p>
+            
+            <ul class="list-disc list-inside text-gray-600 space-y-1 pl-4">
+                <li><span class="font-semibold text-indigo-600">Missão:</span> Tornar o movimento inteligente acessível a todos.</li>
+                <li><span class="font-semibold text-indigo-600">Visão:</span> Ser a plataforma líder em coordenação motora digital no Brasil.</li>
+            </ul>
+
+            <button class="px-5 py-2.5 rounded bg-slate-500 text-white font-semibold hover:bg-slate-600 transition">
+                Ler a História Completa
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName, event) {
+            // Previne a navegação padrão do link
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Esconde todos os conteúdos
+            document.getElementById('content-suporte').classList.add('hidden');
+            document.getElementById('content-parceria').classList.add('hidden');
+            document.getElementById('content-institucional').classList.add('hidden');
+
+            // Remove a classe ativa de todas as abas
+            document.getElementById('tab-suporte').classList.remove('tab-active');
+            document.getElementById('tab-parceria').classList.remove('tab-active');
+            document.getElementById('tab-institucional').classList.remove('tab-active');
+            
+            // Mostra o conteúdo e define a aba como ativa
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('tab-active');
+        }
+
+        // Inicializa para a aba de suporte quando a página carrega
+        window.onload = function() {
+            showTab('suporte');
+        };
+    </script>
+</body>
+</html>

@@ -260,3 +260,46 @@ DOM.signOutButton.addEventListener('click', e => {
     window.location.href = '/logout/';
 });
 DOM.deleteAccountBtn.addEventListener('click', e => ModalManager.open('delete'));
+
+
+
+// Melhorar carregamento de imagens com fallback
+document.querySelectorAll('.exercise-image').forEach(img => {
+    img.addEventListener('error', function() {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'exercise-image-placeholder';
+        placeholder.innerHTML = '🏃';
+        this.style.display = 'none';
+        this.parentElement.appendChild(placeholder);
+    });
+
+    img.addEventListener('load', function() {
+        this.style.opacity = '1';
+    });
+
+    // Fade in suave
+    img.style.opacity = '0';
+    img.style.transition = 'opacity 0.3s ease-in';
+});
+
+// Toggle das exercise details
+function toggleExercise(card) {
+    const details = card.querySelector('.exercise-details');
+    card.classList.toggle('expanded');
+    details.classList.toggle('show');
+}
+
+// Mobile menu toggle
+const menuToggle = document.getElementById('menu-toggle');
+if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+}
+
+// Fechar sidebar ao clicar em um link
+document.querySelectorAll('.exercise-link').forEach(link => {
+    link.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.remove('active');
+    });
+});

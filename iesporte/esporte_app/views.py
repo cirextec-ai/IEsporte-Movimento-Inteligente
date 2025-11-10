@@ -19,9 +19,14 @@ def home(request):
     context = facade.obter_contexto_pagina_inicial(request)
     return render(request, 'index.html', context)
 
+def contato(request):
+    return render(request, "contato.html")
+
+def fale_conosco(request):
+    return render(request, "fale_conosco.html")
 
 def login_view(request):
-    """View de login - usa Facade para autenticação"""
+   
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -38,7 +43,7 @@ def login_view(request):
     return render(request, 'index.html')
 
 
-def signup(request):
+def signup_view(request):
     """View de cadastro - usa Facade para criação de usuário"""
     if request.method == 'POST':
         email = request.POST.get('email')

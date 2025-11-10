@@ -16,7 +16,8 @@ def home(request):
         'user': request.user if request.user.is_authenticated else None
     }
     return render(request, 'index.html', context)
-
+def trabalhe_conosco(request):
+    return render(request, 'trabalhe_conosco.html')
 
 def login_view(request):
     """View de login tradicional (formulário Django)"""
@@ -38,6 +39,14 @@ def login_view(request):
             return render(request, 'index.html', {'error': 'Credenciais inválidas'})
     
     return render(request, 'index.html')
+
+# Nova função para Contato
+def contato(request):
+    return render(request, 'contato.html', {}) # Você pode criar este arquivo depois
+
+# Nova função para Fale Conosco
+def fale_conosco(request):
+    return render(request, 'fale_conosco.html', {}) # Você pode criar este arquivo depois
 
 
 def signup(request):

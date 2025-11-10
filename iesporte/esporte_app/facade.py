@@ -34,6 +34,62 @@ class ExercicioFacade:
                 'imagem': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop'
             },
             {
+                "nome": "Ping Pong",
+                "tipo": "Lazer",
+                "foco": ["Coordenação", "Reflexo"],
+                "objetivo": "Aprimorar o tempo de reação e coordenação motora.",
+                "execucao": "A cada saque, troque de lado rapidamente e tente rebater a bolinha com precisão.",
+                "imagem": "https://swikblog.com/wp-content/uploads/2017/07/ping-pong-5-1.jpg"
+            },
+            {
+                "nome": "Natação",
+                "tipo": "Treinamento",
+                "foco": ["Coordenação", "Resistência"],
+                "objetivo": "Melhorar resistência, respiração e coordenação dos movimentos.",
+                "execucao": "Nade continuamente alternando braços e pernas, focando na respiração controlada.",
+                "imagem": "https://www.plumasnews.com/wp-content/uploads/2023/07/IMG_4296.jpg"
+            },
+            {
+                "nome": "Abdômen",
+                "tipo": "Treinamento",
+                "foco": ["Core", "Resistência"],
+                "objetivo": "Fortalecer os músculos abdominais.",
+                "execucao": "Deite de barriga para cima, flexione os joelhos, eleve o tronco em direção aos joelhos e retorne devagar.",
+                "imagem": "https://www.smartfit.com.br/news/wp-content/uploads/2017/05/abdominais.jpg"
+            },
+            {
+                "nome": "Bíceps Curl",
+                "tipo": "Treinamento",
+                "foco": ["Braços", "Bíceps"],
+                "objetivo": "Fortalecer os músculos dos braços.",
+                "execucao": "Fique com os pés afastados na largura dos ombros, segure pesos e flexione os cotovelos aproximando os pesos dos ombros.",
+                "imagem": "https://i.ytimg.com/vi/XaR3mSM3-7g/maxresdefault.jpg"
+            },
+            {
+                "nome": "Tríceps Banco",
+                "tipo": "Treinamento",
+                "foco": ["Braços", "Tríceps"],
+                "objetivo": "Fortalecer a parte posterior do braço.",
+                "execucao": "Sentado na beirada de um banco, apoie as mãos ao lado dos quadris, flexione os cotovelos descendo o corpo e estenda para subir.",
+                "imagem": "https://www.hipertrofia.org/blog/wp-content/uploads/2020/05/triceps-banco.jpg"
+            },
+            {
+                "nome": "Remada Unilateral",
+                "tipo": "Treinamento",
+                "foco": ["Costas", "Dorsais"],
+                "objetivo": "Fortalecer os músculos das costas e melhorar a postura.",
+                "execucao": "Com um halter, apoie uma mão e o joelho em um banco, puxe o peso em direção ao quadril mantendo as costas retas.",
+                "imagem": "https://strongguru.org/wp-content/uploads/2019/11/how-many-working-set.jpg"
+            },
+            {
+                "nome": "Pull-up (Barra Fixa)",
+                "tipo": "Treinamento",
+                "foco": ["Costas", "Braços", "Dorsais"],
+                "objetivo": "Desenvolver força e resistência nas costas e braços.",
+                "execucao": "Segure a barra com as palmas voltadas para frente, suspenda o corpo até o queixo ultrapassar a barra e desça lentamente.",
+                "imagem": "https://product-hub-prd.madeiramadeira.com.br/4263899/images/40456155-acd2-49e9-8bd1-0b53cf63e28259525364barrafixapullupmusculacaocalisteniaparaboltpretosku1133v168567525600x600.jpg"
+            },
+            {
                 'nome': 'Pássaro-Cachorro',
                 'tipo': 'Aquecimento',
                 'foco': ['Coordenação', 'Core', 'Coluna'],
@@ -47,7 +103,7 @@ class ExercicioFacade:
                 'foco': ['Core', 'Estabilidade'],
                 'objetivo': 'Fortalecer o core profundo.',
                 'execucao': 'Deitado, levante braços e pernas. Desça o braço e a perna opostos lentamente.',
-                'imagem': 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=300&fit=crop'
+                'imagem': 'https://www.feitodeiridium.com.br/wp-content/uploads/2017/08/inseto-morto-435x435.jpg'
             },
             {
                 'nome': 'Retração do Queixo',
@@ -55,7 +111,7 @@ class ExercicioFacade:
                 'foco': ['Pescoço'],
                 'objetivo': 'Corrigir a postura de pescoço anteriorizado.',
                 'execucao': 'Encostado na parede, puxe suavemente o queixo para trás.',
-                'imagem': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop'
+                'imagem': 'https://4.bp.blogspot.com/-EtAOAegYB5U/U1P7QfXR4DI/AAAAAAAALK8/w656CixNSB0/s1600/1a1a21782_301887076588074_697658019_n.jpg'
             },
             {
                 'nome': 'Prancha Lateral',
@@ -71,7 +127,7 @@ class ExercicioFacade:
                 'foco': ['Quadril', 'Pernas'],
                 'objetivo': 'Fortalecer os glúteos e a estabilidade do quadril.',
                 'execucao': 'Deitado, flexione os joelhos. Levante o quadril do chão, contraindo os glúteos.',
-                'imagem': 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&h=300&fit=crop'
+                'imagem': 'https://blog.ciaathletica.com.br/wp-content/uploads/2021/01/blog_gluteo_v1.png'
             },
         ]
     

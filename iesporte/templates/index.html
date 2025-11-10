@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IEsporte - Movimento Inteligente</title>
+    <title>IEsporte - Movimentos Inteligentes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -24,247 +24,156 @@
             max-width: 400px;
             margin: 0 auto;
         }
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+        .exercise-image-placeholder {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-        .btn-primary {
-            background: #667eea;
-            color: white;
-            border: none;
-        }
-        .btn-primary:hover {
-            background: #5568d3;
-        }
-        .btn-secondary {
-            background: #e2e8f0;
-            color: #334155;
-            border: none;
-        }
-        .btn-secondary:hover {
-            background: #cbd5e1;
-        }
-        .form-control {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .error {
-            background: #fee;
-            color: #c00;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .success {
-            background: #efe;
-            color: #060;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        .exercise-card {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .exercise-card:hover {
-            border-color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-        }
-        .exercise-card.expanded {
-            border-color: #667eea;
-            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
-        }
-        .exercise-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-        }
-        .exercise-details.show {
-            max-height: 1000px;
-        }
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .badge-aquecimento {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        .badge-treinamento {
-            background: #dbeafe;
-            color: #1e40af;
-        }
-        .badge-foco {
-            background: #f3e8ff;
-            color: #6b21a8;
-        }
-        .exercise-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            margin-top: 1rem;
-        }
-        .expand-icon {
-            transition: transform 0.3s;
-        }
-        .expanded .expand-icon {
-            transform: rotate(180deg);
-        }
+        /* Outras classes Tailwind já usadas no HTML */
     </style>
 </head>
 <body>
+    <header class="bg-white shadow-lg sticky top-0 z-40">
+        <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="{% url 'home' %}" class="text-2xl font-extrabold text-indigo-600 hover:text-indigo-800 transition flex items-center">
+                🏃 IEsporte
+            </a>
+            
+            <div class="flex items-center space-x-6">
+                <ul class="hidden md:flex space-x-6 text-lg font-medium">
+                    <li>
+                        <a href="{% url 'home' %}" class="text-gray-700 hover:text-indigo-600 transition duration-300">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contato' %}" class="text-gray-700 hover:text-indigo-600 transition duration-300">Contato</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'fale_conosco' %}" class="text-gray-700 hover:text-indigo-600 transition duration-300">Fale Conosco</a>
+                    </li>
+                </ul>
+
+                {% if user_authenticated %}
+                    <form method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="px-4 py-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 transition text-sm">
+                            Sair
+                        </button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition text-sm">
+                        Entrar
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
     <div class="container">
-        <h1 style="text-align: center; color: #667eea; margin-bottom: 0.5rem; font-size: 2.5rem;">
-            🏃 IEsporte
-        </h1>
-        <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">
-            Seu movimento, nossa ciência
+        <p class="text-center text-gray-600 mb-8 text-lg">
+            Bem Estar, Movimentos e Coordenação
         </p>
 
         {% if error %}
-        <div class="error">
+        <div class="bg-red-50 text-red-600 px-4 py-3 rounded mb-3 border-l-4 border-red-500">
             ❌ {{ error }}
         </div>
         {% endif %}
 
         {% if user_authenticated %}
-        <!-- ÁREA LOGADA - EXERCÍCIOS -->
-        <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-            <div class="success" style="margin: 0; flex: 1;">
-                ✅ Bem-vindo, <strong>{{ user.email }}</strong>!
-            </div>
-            <form method="POST" action="{% url 'logout' %}" style="margin-left: 1rem;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-secondary">Sair</button>
-            </form>
-        </div>
-
-        <h2 style="color: #334155; margin-bottom: 1.5rem; font-size: 1.75rem;">
-            📋 Seus Exercícios (clique para ver detalhes)
+        
+        <h2 class="text-2xl text-slate-800 mb-6 font-bold flex items-center gap-2">
+            <span>📋</span> Seus Exercícios <span class="text-sm text-slate-400">(clique para ver detalhes)</span>
         </h2>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem;">
+        
+        <input type="text" id="filtro-exercicio" placeholder="Buscar exercício" class="w-full px-3 py-2 border-2 border-indigo-100 rounded mb-6 focus:border-indigo-500" onkeyup="filtrarCards()">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {% for exercicio in exercicios %}
-            <div class="exercise-card" onclick="toggleExercise({{ forloop.counter0 }})">
-                <!-- Cabeçalho do Card -->
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3 style="color: #667eea; margin: 0; font-size: 1.25rem;">
-                        {{ exercicio.nome }}
-                    </h3>
-                    <svg class="expand-icon" width="24" height="24" fill="none" stroke="#667eea" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M19 9l-7 7-7-7"/>
-                    </svg>
+            <div class="bg-white border-2 border-indigo-100 rounded-xl p-4 shadow hover:shadow-lg transition exercise-card cursor-pointer"
+                 onclick="toggleExercise({{ forloop.counter0 }}, this)">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-indigo-700">{{ exercicio.nome }}</h3>
+                    <svg class="expand-icon" width="24" height="24" fill="none" stroke="#667eea" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
                 </div>
-                
-                <div style="margin-top: 0.75rem;">
-                    <span class="badge badge-{{ exercicio.tipo|lower }}">
+                <div class="mb-2">
+                    <span class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-semibold">
                         {{ exercicio.tipo }}
                     </span>
                     {% for area in exercicio.foco %}
-                    <span class="badge badge-foco">{{ area }}</span>
+                        <span class="inline-block px-2 py-0.5 bg-purple-50 text-purple-600 rounded-full text-xs font-semibold ml-1 mb-1">
+                            {{ area }}
+                        </span>
                     {% endfor %}
                 </div>
-
-                <!-- Detalhes Expandíveis -->
                 <div class="exercise-details" id="exercise-{{ forloop.counter0 }}">
-                    {% if exercicio.imagem %}
-                    <img src="{{ exercicio.imagem }}" alt="{{ exercicio.nome }}" class="exercise-image">
-                    {% endif %}
-
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid #e2e8f0;">
-                        <strong style="color: #667eea; font-size: 1rem;">💡 Objetivo:</strong>
-                        <p style="margin: 0.5rem 0; color: #475569; line-height: 1.6;">{{ exercicio.objetivo }}</p>
-                    </div>
-
-                    <div style="margin-top: 1rem;">
-                        <strong style="color: #667eea; font-size: 1rem;">🎯 Como Executar:</strong>
-                        <p style="margin: 0.5rem 0; color: #475569; line-height: 1.6;">{{ exercicio.execucao }}</p>
+                    <div style="position:relative;">
+                        {% if exercicio.imagem %}
+                            <img src="{{ exercicio.imagem }}" alt="{{ exercicio.nome }}" class="w-full h-48 object-cover rounded mb-4 exercise-image">
+                        {% endif %}
+                        </div>
+                    <div class="border-t pt-4 mt-4">
+                        <strong class="text-indigo-600">💡 Objetivo:</strong>
+                        <p class="text-gray-700 mt-1 mb-4">{{ exercicio.objetivo }}</p>
+                        <strong class="text-indigo-600">🎯 Como Executar:</strong>
+                        <p class="text-gray-700 mt-1">{{ exercicio.execucao }}</p>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-
         {% else %}
-        <!-- FORMULÁRIOS DE LOGIN/CADASTRO -->
         <div class="auth-container">
-            <form method="POST" action="{% url 'login' %}">
+            <form method="POST" action="{% url 'login' %}" class="mb-8 bg-slate-50 rounded-lg p-6 shadow">
                 {% csrf_token %}
-                <h2 style="margin-bottom: 1rem; color: #334155;">Login</h2>
-                
+                <h2 class="text-2xl mb-4 font-bold text-slate-700">Login</h2>
                 <input 
-                    type="email" 
-                    name="email" 
-                    class="form-control" 
-                    placeholder="Email" 
+                    type="email"
+                    name="email"
+                    class="w-full px-4 py-2 border-2 border-indigo-100 rounded mb-4 focus:border-indigo-500"
+                    placeholder="Email"
                     required
                 >
-                
                 <input 
-                    type="password" 
-                    name="password" 
-                    class="form-control" 
-                    placeholder="Senha" 
+                    type="password"
+                    name="password"
+                    class="w-full px-4 py-2 border-2 border-indigo-100 rounded mb-4 focus:border-indigo-500"
+                    placeholder="Senha"
                     required
                 >
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <button type="submit" class="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-800 transition w-full">
                     Entrar
                 </button>
             </form>
-
-            <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e2e8f0;">
-
-            <form method="POST" action="{% url 'signup' %}">
+            <hr class="my-8 border-slate-200">
+            <form method="POST" action="{% url 'signup' %}" class="bg-slate-50 rounded-lg p-6 shadow">
                 {% csrf_token %}
-                <h2 style="margin-bottom: 1rem; color: #334155;">Criar Conta</h2>
-                
+                <h2 class="text-2xl mb-4 font-bold text-slate-700">Criar Conta</h2>
                 <input 
-                    type="email" 
-                    name="email" 
-                    class="form-control" 
-                    placeholder="Email" 
+                    type="email"
+                    name="email"
+                    class="w-full px-4 py-2 border-2 border-indigo-100 rounded mb-4 focus:border-indigo-500"
+                    placeholder="Email"
                     required
                 >
-                
                 <input 
-                    type="password" 
-                    name="password" 
-                    class="form-control" 
-                    placeholder="Senha (mín. 6 caracteres)" 
+                    type="password"
+                    name="password"
+                    class="w-full px-4 py-2 border-2 border-indigo-100 rounded mb-4 focus:border-indigo-500"
+                    placeholder="Senha (mín. 6 caracteres)"
                     required
                     minlength="6"
                 >
-                
-                <label style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <label class="flex items-center text-xs mb-4">
                     <input 
-                        type="checkbox" 
-                        name="aceite_termos" 
+                        type="checkbox"
+                        name="aceite_termos"
                         required
-                        style="margin-right: 0.5rem;"
+                        class="mr-2 accent-indigo-600"
                     >
                     Aceito os termos de uso
                 </label>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <button type="submit" class="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-800 transition w-full">
                     Cadastrar
                 </button>
             </form>
@@ -272,15 +181,109 @@
         {% endif %}
     </div>
 
-    <script>
-        function toggleExercise(index) {
-            const card = event.currentTarget;
-            const details = document.getElementById('exercise-' + index);
+    <div id="spinner" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-indigo-600 border-b-4"></div>
+    </div>
+    <div id="snackbar" class="fixed bottom-6 right-6 z-50 bg-indigo-600 text-white py-3 px-6 rounded shadow-lg opacity-0 transition">
+        <span id="snackbar-message"></span>
+    </div>
+    <div id="ajuda-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+      <div class="bg-white rounded-xl p-8 max-w-lg shadow">
+        <h2 class="text-xl font-bold mb-2">Bem-vindo ao IEsporte!</h2>
+        <p class="mb-4">Aqui você terá acesso rápido aos melhores exercícios de coordenação motora, focados no seu bem-estar. Use o menu ao lado para navegar, experimente pesquisar exercícios no topo e não hesite em acessar a ajuda sempre que precisar!</p>
+        <button onclick="document.getElementById('ajuda-modal').classList.add('hidden')" class="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-800 transition">
+            Entendi
+        </button>
+      </div>
+    </div>
+    <footer class="bg-gray-900 text-white mt-16">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-4">
             
-            // Toggle classes
-            card.classList.toggle('expanded');
-            details.classList.toggle('show');
-        }
-    </script>
+            <div class="col-span-2 md:col-span-1">
+                <h3 class="text-xl font-bold text-indigo-400 mb-4">IEsporte</h3>
+                <p class="text-gray-400 text-sm mb-4">
+                    Movimento Inteligente, Performance Ilimitada.
+                </p>
+                
+                <div class="flex space-x-4">
+                    
+                    <a href="URL_DO_SEU_FACEBOOK" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.564V12h2.775l-.444 2.89h-2.331v6.987C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    
+                    <a href="URL_DO_SEU_INSTAGRAM" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.715.01 3.675.045.786.03 1.144.175 1.503.325.46.195.84.455 1.22.835.38.38.64.76.835 1.22.15.36.295.717.325 1.503.03.96.045 1.245.045 3.675s-.01 2.715-.045 3.675c-.03.786-.175 1.144-.325 1.503-.195.46-.455.84-.835 1.22-.38.38-.76.64-1.22.835-.36.15-.717.295-1.503.325-.96.03-1.245.045-3.675.045s-2.715-.01-3.675-.045c-.786-.03-1.144-.175-1.503-.325-.46-.195-.84-.455-1.22-.835-.38-.38-.64-.76-.835-1.22-.15-.36-.295-.717-.325-1.503-.03-.96-.045-1.245-.045-3.675s.01-2.715.045-3.675c.03-.786.175-1.144.325-1.503.195-.46.455-.84.835-1.22.38-.38.76-.64 1.22-.835.36-.15.717-.295 1.503-.325.96-.03 1.245-.045 3.675-.045zM12 4c-2.76 0-3.1.01-4.25.06c-.72.03-1.07.15-1.34.25-.37.14-.64.33-.91.6-.27.27-.46.54-.6.91-.1.27-.22.62-.25 1.34-.05 1.15-.06 1.49-.06 4.25s.01 3.1.06 4.25c.03.72.15 1.07.25 1.34.14.37.33.64.6.91.27.27.54.46.91.6.27.1.62.22 1.34.25 1.15.05 1.49.06 4.25.06s3.1-.01 4.25-.06c.72-.03 1.07-.15 1.34-.25.37-.14.64-.33.91-.6.27-.27.46-.54.6-.91.1-.27.22-.62.25-1.34.05-1.15.06-1.49.06-4.25s-.01-3.1-.06-4.25c-.03-.72-.15-1.07-.25-1.34-.14-.37-.33-.64-.6-.91-.27-.27-.54-.46-.91-.6-.27-.1-.62-.22-1.34-.25-1.15-.05-1.49-.06-4.25-.06zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zM16.75 6.75a1.25 1.25 0 11-2.5 0 1.25 1.25 0 012.5 0z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    
+                    <a href="URL_DO_SEU_TIKTOK" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.55 3.32c-.08 0-.15.06-.18.14a.75.75 0 00-.02.16v7.3a.75.75 0 00.75.75h1.5a.75.75 0 000-1.5h-.75v-6.5h1.22c.32 0 .6-.26.6-.58s-.27-.58-.6-.58h-1.84zm-3.1 5.43c-.4-.44-1-.7-1.7-.7s-1.3.26-1.7.7a2.38 2.38 0 00-.7 1.7c0 .7.27 1.3.7 1.7.4.44 1 .7 1.7.7s1.3-.26 1.7-.7c.4-.44.7-1 .7-1.7s-.3-1.3-.7-1.7zM14.5 13.5a.75.75 0 00-.75.75v1.5a.75.75 0 00.75.75h1.5a.75.75 0 000-1.5h-.75v-1.5a.75.75 0 00-.75-.75zM12 1.5A10.5 10.5 0 1022.5 12 10.51 10.51 0 0012 1.5zm6.5 10.5a.75.75 0 00-1.5 0v3.75a.75.75 0 00.75.75h.75a.75.75 0 000-1.5h-.75v-3.75z"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="URL_DO_SEU_LINKEDIN" target="_blank" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4z"/>
+                            <circle cx="6" cy="6" r="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-base font-semibold text-white tracking-wider uppercase mb-4">Navegação</h3>
+                <ul class="space-y-3">
+                    <li><a href="{% url 'home' %}" class="text-gray-400 hover:text-indigo-400 transition">Início</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Planos</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Comunidade</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Blog</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-base font-semibold text-white tracking-wider uppercase mb-4">Suporte</h3>
+                <ul class="space-y-3">
+                    <li><a href="{% url 'contato' %}" class="text-gray-400 hover:text-indigo-400 transition">Contato</a></li>
+                    <li><a href="{% url 'fale_conosco' %}" class="text-gray-400 hover:text-indigo-400 transition">Fale Conosco</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Ajuda / FAQ</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Status do Sistema</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-base font-semibold text-white tracking-wider uppercase mb-4">Legal</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Termos de Serviço</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Política de Privacidade</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Trabalhe Conosco</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-700">
+            <p class="text-center text-gray-400 text-sm">
+                &copy; <span id="current-year"></span> IEsporte. Todos os direitos reservados.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Script simples para atualizar o ano automaticamente
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+<script>
+    // Script simples para atualizar o ano automaticamente
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
