@@ -3,237 +3,91 @@
 ### Aluno: Sergio Ademir Rocha do Carmo 
 ### Professor Dr.: Andrey Rodrigues 
 
-**📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)**
+Perfeito ✅
+Aqui está o conteúdo do seu documento **“📊 Avaliação Heurística de Nielsen”** refeito manualmente em um formato Markdown (.md) limpo, legível e pronto para uso em GitHub, Notion ou relatórios técnicos:
 
-** Novembro de 2025**
+---
 
-**Versão Avaliada: Sistema Antes das Mudanças (Imagens Anteriores) vs.
-Sistema Atual (Com Header, Footer e Busca)**
+```markdown
+# 📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)
 
-**Objetivo: Documentar as melhorias de UX, justificando cada mudança de
-interface pela aplicação consciente das Heurísticas de Nielsen.**
+**Data da Análise:** 10 de Novembro de 2025  
+**Versão Avaliada:** Sistema Antes das Mudanças (Imagens Anteriores) vs. Sistema Atual (Com Header, Footer e Busca)  
+**Objetivo:** Documentar as melhorias de UX, justificando cada mudança de interface pela aplicação consciente das Heurísticas de Nielsen.
 
-**1. 🔍 Análise Comparativa do Sistema (Heurísticas de Nielsen)**
+---
 
-**A tabela a seguir compara a implementação das Heurísticas na versão
-anterior (sem navegação global) e na versão atual (com Header e Footer),
-destacando o ganho de usabilidade.**
+## 1. 🔍 Análise Comparativa do Sistema (Heurísticas de Nielsen)
 
+A tabela a seguir compara a implementação das Heurísticas na versão anterior (sem navegação global) e na versão atual (com Header e Footer), destacando o ganho de usabilidade.
 
-  --------------------------------------------------------------------------
-  **Heurística**    **Sistema         **Sistema Atual   **Ganho de UX
-                    Anterior (Antes   (Após Redesign)** (Comentário)**
-                    do Redesign)**                      
-  ----------------- ----------------- ----------------- --------------------
-  
-  **1. Visibilidade **Indicador de    **Ponto Forte: O  **O status da sessão
-  do Status**       login isolado na  botão \'Sair\' no e de filtragem é
-                    área de           Header e a barra  posicionado em local
-                    conteúdo.**       de busca são      padrão (canto
-                                      padrões           superior direito),
-                                      globais.**        melhorando o
-                                                        reconhecimento e
-                                                        liberando espaço no
-                                                        conteúdo.**
+| **Heurística** | **Sistema Anterior (Antes do Redesign)** | **Sistema Atual (Após Redesign)** | **Ganho de UX (Comentário)** |
+|----------------|------------------------------------------|-----------------------------------|-------------------------------|
+| **1. Visibilidade do Status** | Indicador de login isolado na área de conteúdo. | O botão **Sair** no Header e a barra de busca são padrões globais. | O status da sessão e de filtragem é posicionado em local padrão (canto superior direito), melhorando o reconhecimento e liberando espaço no conteúdo. |
+| **2. Correspondência entre o Sistema e o Mundo Real** | Boa correspondência em termos de exercícios (Gato-Vaca, Natação). | Adição de elementos de negócio real no Footer (Redes Sociais, Termos de Serviço). | Reforça a credibilidade e a relação com o mundo profissional e social. |
+| **3. Liberdade e Controle do Usuário** | Ponto crítico: mínima, apenas o botão Sair. | Header e Footer fornecem controle total de navegação (Home, Contato, Legal). | O usuário pode navegar livremente e sair de áreas sem se sentir "preso" ou perdido. |
+| **4. Consistência e Padrões** | Consistente apenas na exibição dos cards de exercício. | Adoção de padrões de web design (Header, Footer, layout de 4 colunas). | Aumenta a previsibilidade e reduz a curva de aprendizado. |
+| **6. Reconhecimento em vez de Memorização** | Opções de navegação estavam escondidas. | Links essenciais (Suporte, Ajuda, etc.) estão visíveis no Footer e Header. | Reduz esforço mental e facilita o reconhecimento. |
+| **7. Flexibilidade e Eficiência de Uso** | Navegação lenta (rolagem e menus dropdown). | Inclusão da barra de busca no topo. | Usuários experientes encontram conteúdo diretamente, novos usam o menu. |
+| **8. Estética e Design Minimalista** | Design limpo e focado no conteúdo. | Manteve o design limpo e profissional, integrando Header/Footer. | Sistema parece mais completo e bem acabado. |
+| **9. Ajuda e Documentação** | Ausência de links de ajuda ou FAQ. | Links como **Ajuda / FAQ** e **Fale Conosco** no Footer/Header. | Fornece canais claros para suporte. |
 
+---
+
+## 2. 📝 Mudanças de Interface e Justificativa Heurística
+
+Esta seção detalha as implementações do redesenho, atestando como cada componente resolve um problema de usabilidade anterior.
+
+---
+
+### A. Melhoria na Navegação Global e Controle de Sessão
+
+A ausência de navegação era a maior falha da versão anterior.
+
+| **Heurística** | **Componente de Interface** | **Antes (Descrição)** | **Depois (Descrição)** | **Justificativa UX** |
+|----------------|-----------------------------|------------------------|------------------------|----------------------|
+| **3. Liberdade e Controle do Usuário** | Header de Navegação | Inexistente. O usuário não tinha como sair da tela principal. | Implementação de Header fixo com links: Home, Contato, Fale Conosco, Sair. | Fornece ponto de controle claro e liberdade de navegação. |
+| **1. Visibilidade do Status do Sistema** | Indicador de Sessão | Mensagem de boas-vindas dentro do conteúdo. | Status de sessão movido para o canto superior direito do Header. | Padrão web e posicionamento consistente. |
+| **7. Flexibilidade e Eficiência de Uso** | Barra de Busca | Inexistente. Pesquisa dependia de rolagem. | Adição de barra “Buscar exercício” no topo da lista. | Aumenta eficiência e rapidez na busca de conteúdo. |
+
+---
+
+### B. Reforço de Ajuda, Documentação e Consistência
+
+O Footer resolveu problemas de suporte e identidade de marca.
+
+| **Heurística** | **Componente de Interface** | **Antes (Descrição)** | **Depois (Descrição)** | **Justificativa UX** |
+|----------------|-----------------------------|------------------------|------------------------|----------------------|
+| **9. Ajuda e Documentação** | Footer (Rodapé) | Inexistente. | Implementação de Footer com 4 colunas e links de suporte (Ajuda / FAQ, Status do Sistema). | Usuário tem acesso constante à ajuda e documentação. |
+| **2. Correspondência entre o Sistema e o Mundo Real** | Links Institucionais | Ausente. Sistema parecia um protótipo. | Footer inclui links legais (Termos, Política, Redes Sociais). | Garante credibilidade e padrão de produto real. |
+| **6. Reconhecimento em Vez de Memorização** | Hierarquia de Links | Links escondidos/misturados. | Footer organiza links secundários de forma clara e agrupada. | Elimina necessidade de memorizar locais de navegação. |
+
+---
+
+## 3. ✅ Próximas Melhorias (Plano de Refinamento)
+
+Pontos planejados para atingir o nível máximo de usabilidade e consistência:
+
+| **Heurística** | **Problema a Ser Resolvido** | **Ação de Melhoria Planejada** |
+|----------------|-------------------------------|--------------------------------|
+| **5. Prevenção de Erros** | O botão “Sair” pode ser clicado acidentalmente. | Implementar uma confirmação (modal) ao clicar. |
+| **6. Reconhecimento** | A barra de busca é puramente textual. | Adicionar ícone de lupa (🔎) para reforço visual. |
+| **4. Consistência e Padrões** | Cores das tags (Aquecimento, Core) são inconsistentes. | Padronizar sistema de cores semântico. |
+| **4. Consistência e 8. Estética** | Logo e tipografia variam entre Header e Footer. | Garantir tipografia e espaçamento idênticos. |
+| **3. Liberdade e Controle** | Links externos desviam o usuário. | Usar `target="_blank"` em links externos. |
+
+---
+
+## 📌 Conclusão
+
+O redesign do sistema **IEsporte** resultou em melhorias significativas de **usabilidade**, **navegabilidade** e **consistência visual**, seguindo rigorosamente as **Heurísticas de Nielsen**.  
+As próximas etapas de refinamento visam consolidar a experiência do usuário e alinhar o produto a padrões profissionais de UX/UI.
+
+---
+```
+
+---
+
+Deseja que eu adicione **formatação visual extra** (como emojis, cores via HTML, ou estilo GitHub-flavored Markdown)? Isso pode deixar o arquivo mais agradável para portfólio ou apresentação.
  
-  **2.              **Boa             **Ponto Forte:    **Reforça a
-  Correspondência   correspondência   Adição de         credibilidade e a
-  entre o Sistema e em termos de      elementos de      relação com o mundo
-  o Mundo Real**    exercícios        negócio real no   profissional e
-                    (Gato-Vaca,       Footer (Redes     social (Heurística
-                    Natação).**       Sociais, Termos   2).**
-                                      de Serviço).**    
-
-  
-  **3. Liberdade e  **Ponto Crítico:  **Ponto Forte:    **O usuário pode
-  Controle do       Mínima. Apenas o  Header e Footer   navegar livremente e
-  Usuário**         botão Sair.**     fornecem controle sair de áreas sem se
-                                      total de          sentir \"preso\" ou
-                                      navegação (Home,  perdido, através de
-                                      Contato,          uma navegação
-                                      Legal).**         constante.**
-
-  
-  **4. Consistência **Consistente     **Ponto Forte:    **Aumenta a
-  e Padrões**       apenas na         Adotou padrões de previsibilidade e
-                    exibição dos      web design        reduz a curva de
-                    cards de          (Header, Footer,  aprendizado, pois os
-                    exercício.**      layout de 4       elementos se
-                                      colunas no        comportam de maneira
-                                      rodapé) em todas  familiar.**
-                                      as páginas.**     
-
- 
-  **6.              **Opções de       **Ponto Forte:    **O usuário gasta
-  Reconhecimento em navegação estavam Links essenciais  menos esforço
-  Vez de            escondidas ou     (Suporte, Ajuda,  mental, pois as
-  Memorização**     inexistentes.**   etc.) estão       opções são
-                                      sempre visíveis   facilmente
-                                      no Footer e       reconhecíveis e não
-                                      Header.**         precisam ser
-                                                        memorizadas.**
-
-  
-  **7.              **Navegação lenta **Ponto Forte:    **Permite que
-  Flexibilidade e   (apenas rolagem e Inclusão da barra usuários experientes
-  Eficiência de     menus de          de busca (Buscar  encontrem conteúdo
-  Uso**             dropdown).**      exercício) no     diretamente
-                                      topo da lista.**  (eficiência) e
-                                                        usuários novos usem
-                                                        o menu
-                                                        (flexibilidade).**
-
-
-  **8. Estética e   **Design limpo e  **Ponto Forte:    **O sistema parece
-  Design            focado no         Manteve o design  mais completo e bem
-  Minimalista**     conteúdo.**       limpo e           acabado, mantendo o
-                                      profissional,     foco nos cards de
-                                      integrando novos  exercício.**
-                                      elementos         
-                                      (Header/Footer)   
-                                      com o tema        
-                                      roxo/azul.**      
-
- 
-  **9. Ajuda e      **Ponto Crítico:  **Ponto Forte:    **Fornece canais
-  Documentação**    Ausência de links Links como Ajuda  claros para o
-                    de ajuda ou       / FAQ e Fale      usuário buscar
-                    FAQ.**            Conosco no Footer suporte quando
-   
-                                      e Header.**       necessário.**
-  --------------------------------------------------------------------------
-
-
-**2. 📝 Mudanças de Interface e Justificativa Heurística**
-
-
-**Esta seção detalha as implementações do redesenho, atestando como cada
-componente resolve um problema de usabilidade anterior, demonstrando a
-aplicação consciente dos princípios.**
-
-
-**A. Melhoria na Navegação Global e Controle de Sessão**
-
-
-**A ausência de navegação era a maior falha da versão anterior.**
-
-
-  ---------------------------------------------------------------------------------------
- 
-  **Heurística**   **Componente   **Antes          **Depois          **Justificativa UX**
-                   de Interface** (Descrição       (Descrição        
-                                  Detalhada)**     Detalhada)**      
-  ---------------- -------------- ---------------- ----------------- --------------------
-  
-  **3. Liberdade e **Header de    **Inexistente. O **Implementação   **Oferece ao usuário
-  Controle do      Navegação**    usuário não      de um Header fixo um ponto de controle
-  Usuário**                       tinha como sair  contendo os links claro e a capacidade
-                                  da tela          primários: Home,  de se mover
-                                  principal ou     Contato, Fale     livremente pelo
-                                  acessar outras   Conosco e o botão sistema.**
-                                  áreas.**         Sair.**           
-
-  
-  **1.             **Indicador de **Mensagem de    **O status da     **Posiciona as
-  Visibilidade do  Sessão**       boas-vindas e    sessão (Sair) foi informações de
-  Status do                       email visíveis   realocado para o  status
-  Sistema**                       dentro da área   canto superior    (logado/deslogado)
-                                  de conteúdo.**   direito do Header em um local padrão e
-                                                   (padrão web).**   consistente.**
-
- 
-  **7.             **Barra de     **Inexistente.   **Adição de uma   **Aumenta
-  Flexibilidade e  Busca**        Pesquisa         barra \"Buscar    drasticamente a
-  Eficiência de                   dependia de      exercício\" no    eficiência,
-  Uso**                           rolagem.**       topo da lista de  permitindo que
-                                                   cards.**          usuários experientes
-                                                                     localizem o conteúdo
-     
-                                                                     diretamente.**
-  ---------------------------------------------------------------------------------------
-
-
-**B. Reforço de Ajuda, Documentação e Consistência**
-
-
-**O Footer resolveu problemas de suporte e identidade de marca.**
-
-
-  -----------------------------------------------------------------------------------------
-
-  **Heurística**    **Componente de    **Antes          **Depois          **Justificativa
-                    Interface**        (Descrição       (Descrição        UX**
-                                       Detalhada)**     Detalhada)**      
-  ----------------- ------------------ ---------------- ----------------- -----------------
- 
-  **9. Ajuda e      **Footer           **Inexistente.   **Implementação   **Garante que o
-  Documentação**    (Rodapé)**         Não havia links  de um Footer de 4 usuário sempre
-                                       de ajuda ou      colunas com links tenha acesso à
-                                       suporte.**       de suporte (Ajuda documentação ou
-                                                        / FAQ, Status do  ajuda.**
-                                                        Sistema).**       
-
- 
-  **2.              **Links            **Ausente. O     **Footer inclui   **O sistema ganha
-  Correspondência   Institucionais**   sistema parecia  links para        credibilidade,
-  entre o Sistema e                    um protótipo sem informações       correspondendo ao
-  o Mundo Real**                       vínculos         legais (Termos de padrão esperado
-                                       sociais.**       Serviço, Política de um produto
-                                                        de Privacidade) e digital real.**
-                                                        Redes Sociais.**  
-
- 
-  **6.              **Hierarquia de    **Links estavam  **O Footer        **O agrupamento e
-  Reconhecimento em Links**            escondidos ou    centraliza todos  a visibilidade
-  Vez de                               misturados.**    os links          constante
-  Memorização**                                         secundários e     eliminam a
-                                                        terciários de     necessidade de o
-                                                        forma clara, com  usuário memorizar
-                                                        agrupamentos de   o local de cada
-                                                        categorias.**     link.**
-  -----------------------------------------------------------------------------------------
-
-
-**3. ✅ Próximas Melhorias (Plano de Refinamento)**
-
-
-**Os seguintes pontos devem ser implementados para atingir o nível
-máximo de usabilidade e consistência:**
-
-  -------------------------------------------------------------------------
- 
-  **Heurística**     **Problema a Ser        **Ação de Melhoria Planejada**
-                     Resolvido**             
-  ------------------ ----------------------- ------------------------------
-  
-  **5. Prevenção de  **O botão Sair pode ser **Implementar uma confirmação
-  Erros**            clicado                 (modal) ao clicar no botão
-                     acidentalmente.**       Sair.**
-
-  
-  **6.               **A barra de busca,     **Adicionar um ícone de lupa
-  Reconhecimento**   embora funcional, é     (🔎) na barra de busca para
-                     puramente textual.**    reforçar visualmente a ação.**
-
-  
-  **4. Consistência  **As cores das tags de  **Padronizar as cores das tags
-  e Padrões**        exercício (Aquecimento, para um sistema de cores
-                     Core) são               semântico consistente em toda
-                     inconsistentes.**       a aplicação.**
-
-  
-  **4. Consistência  **O logo e a tipografia **Garantir que o espaçamento e
-  e 8. Estética**    podem ter pequenas      a tipografia do logo no Header
-                     variações entre Header  sejam idênticos ao nome da
-                     e Footer.**             marca no Footer para máxima
-                                             Consistência.**
-
-  
-  **3. Liberdade e   **Links externos podem  **Todos os links que levam
-  Controle**         desviar o usuário da    para fora (Redes Sociais)
-                     aplicação.**            devem usar o atributo
-                                             target=\"\_blank\" (abrir em
-                                             nova aba).**
-  
   -------------------------------------------------------------------------
