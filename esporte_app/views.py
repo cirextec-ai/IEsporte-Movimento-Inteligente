@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import json
+from django.http import HttpRequest, HttpResponse
+from typing import List, Dict, Any
 
 # Obter o modelo de usuário configurado
 User = get_user_model()
@@ -169,3 +171,46 @@ def logout_view(request):
     logout(request)
     print("✅ Logout realizado")
     return redirect('home')
+
+# Estrutura de dados mockada (simulando resultados de um banco de dados).
+# Os nomes e tags são relevantes para a busca do usuário.
+EXERCISES: List[Dict[str, Any]] = [
+    {"nome": "Gato-Vaca", "categoria": "Aquecimento", "tags": ["coluna", "mobilidade", "yoga"]},
+    {"nome": "Natação no Chão", "categoria": "Treinamento", "tags": ["core", "estabilidade", "postura"]},
+    {"nome": "Prancha Lateral", "categoria": "Core", "tags": ["força", "lateral", "abdomen"]},
+    {"nome": "Ponte de Glúteo", "categoria": "Treinamento", "tags": ["gluteo", "postura", "quadril"]},
+    {"nome": "Superman", "categoria": "Coordenação", "tags": ["lombar", "extensão", "postura", "fortalecimento"]},
+    {"nome": "Corrida Estacionária", "categoria": "Aquecimento", "tags": ["cardio", "preparação", "dinâmico"]},
+]
+
+def buscar_exercicios(request: HttpRequest) -> HttpResponse:
+    """
+    Processa o termo de busca (query) e filtra a lista de exercícios.
+
+    A busca é realizada de forma case-insensitive no 'nome' do exercício
+    e em suas 'tags'.
+    """
+    query = request.GET.get('q', '').strip()
+
+    if query:
+        search_term = query.lower()
+        
+        # Filtra os exercícios usando list comprehension.
+        # Verifica se o termo está no nome OU em alguma das tags.
+        filtered_exercises = [
+            ex for ex in EXERCISES
+            if search_term in ex["nome"].lower() or
+               any(search_term in tag.lower() for tag in ex["tags"])
+        ]
+    else:
+        # Se a busca estiver vazia, retorna todos os exercícios
+        filtered_exercises = EXERCISES
+
+    context = {
+        'exercises': filtered_exercises,
+        'search_query': query,
+        'results_count': len(filtered_exercises)
+    }
+    
+    # Renderiza o template com o contexto (lista filtrada e termo de busca)
+    return render(request, 'esporte_app/lista_exercicios.html', context)
