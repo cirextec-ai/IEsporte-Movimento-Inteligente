@@ -1,7 +1,7 @@
 
-## Relatório Redesing / Avaliação Heurística do Projeto: IEsporte - Movimento Inteligente
-## Aluno: Sergio Ademir Rocha do Carmo
-## Professor Dr.: Andrey Rodrigues
+### Relatório Redesing / Avaliação Heurística do Projeto: IEsporte - Movimento Inteligente 
+### Aluno: Sergio Ademir Rocha do Carmo 
+### Professor Dr.: Andrey Rodrigues 
 
 **📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)**
 
