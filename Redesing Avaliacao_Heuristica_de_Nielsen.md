@@ -1,7 +1,11 @@
-**📊 Avaliação Heurística de Nielsen - Relatório de Redesign
-(IEsporte)**
 
-**Data da Análise: 10 de Novembro de 2025**
+## Relatório Redesing / Avaliação Heurística do Projeto: IEsporte - Movimento Inteligente
+## Aluno: Sergio Ademir Rocha do Carmo
+## Professor Dr.: Andrey Rodrigues
+
+**📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)**
+
+** Novembro de 2025**
 
 **Versão Avaliada: Sistema Antes das Mudanças (Imagens Anteriores) vs.
 Sistema Atual (Com Header, Footer e Busca)**
