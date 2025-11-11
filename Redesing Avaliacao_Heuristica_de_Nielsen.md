@@ -1,171 +1,90 @@
+---
+title: "📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)"
+author: "Sérgio Ademir Rocha do Carmo"
+date: "10 de Novembro de 2025"
+---
 
-### Relatório Redesing / Avaliação Heurística do Projeto: IEsporte - Movimento Inteligente 
-### Aluno: Sergio Ademir Rocha do Carmo 
-### Professor Dr.: Andrey Rodrigues 
+# 🧠 Relatório Técnico - Avaliação Heurística de Nielsen
 
-**“📊 Avaliação Heurística de Nielsen”**  relatório técnico:
-
-
-# 📊 Avaliação Heurística de Nielsen - Relatório de Redesign (IEsporte)
-
+**Aluno:** Sérgio Ademir Rocha do Carmo  
+**Professor Dr.:** Andrey Rodrigues  
 **Data da Análise:** 10 de Novembro de 2025  
-
-**Versão Avaliada:** Sistema Antes das Mudanças (Imagens Anteriores) vs. Sistema Atual (Com Header, Footer e Busca)  
-
-**Objetivo:** Documentar as melhorias de UX, justificando cada mudança de interface pela aplicação consciente das Heurísticas de Nielsen.
+**Versão Avaliada:** Sistema Antes das Mudanças (Imagens Anteriores) vs. Sistema Atual (Com Header, Footer e Busca)
 
 ---
 
-## 1. 🔍 Análise Comparativa do Sistema (Heurísticas de Nielsen)
+## 🎯 Objetivo
 
-A tabela a seguir compara a implementação das Heurísticas na versão anterior (sem navegação global) e na versão atual (com Header e Footer), destacando o ganho de usabilidade.
+Documentar as melhorias de **UX (Experiência do Usuário)**, justificando cada mudança de interface com base na aplicação consciente das **Heurísticas de Nielsen**.  
 
-| **Heurística** | **Sistema Anterior (Antes do Redesign)** | **Sistema Atual (Após Redesign)** | **Ganho de UX (Comentário)** |
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **1. Visibilidade do Status** | Indicador de login isolado na área de conteúdo. | O botão **Sair** no Header e a barra de 
-
-busca são padrões globais. | O status da sessão e de filtragem é posicionado em local padrão (canto superior direito), 
-
-melhorando o reconhecimento e liberando espaço no conteúdo. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **2. Correspondência entre o Sistema e o Mundo Real** | Boa correspondência em termos de exercícios (Gato-Vaca, Natação). | 
-
-Adição de elementos de negócio real no Footer (Redes Sociais, Termos de Serviço). | Reforça a credibilidade e a relação com o 
-
-mundo profissional e social. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **3. Liberdade e Controle do Usuário** | Ponto crítico: mínima, apenas o botão Sair. | Header e Footer fornecem controle total 
-
-de navegação (Home, Contato, Legal). | O usuário pode navegar livremente e sair de áreas sem se sentir "preso" ou perdido. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **4. Consistência e Padrões** | Consistente apenas na exibição dos cards de exercício. | Adoção de padrões de web design 
-
-(Header, Footer, layout de 4 colunas). | Aumenta a previsibilidade e reduz a curva de aprendizado. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **6. Reconhecimento em vez de Memorização** | Opções de navegação estavam escondidas. | Links essenciais (Suporte, Ajuda, 
-
-etc.) estão visíveis no Footer e Header. | Reduz esforço mental e facilita o reconhecimento. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **7. Flexibilidade e Eficiência de Uso** | Navegação lenta (rolagem e menus dropdown). | Inclusão da barra de busca no topo. | 
-
-Usuários experientes encontram conteúdo diretamente, novos usam o menu. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **8. Estética e Design Minimalista** | Design limpo e focado no conteúdo. | Manteve o design limpo e profissional, integrando 
-
-Header/Footer. | Sistema parece mais completo e bem acabado. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **9. Ajuda e Documentação** | Ausência de links de ajuda ou FAQ. | Links como **Ajuda / FAQ** e **Fale Conosco** no 
-
-Footer/Header. | Fornece canais claros para suporte. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-
-## 2. 📝 Mudanças de Interface e Justificativa Heurística
-
-Esta seção detalha as implementações do redesenho, atestando como cada componente resolve um problema de usabilidade anterior.
+O foco está em evidenciar como o redesign do sistema *IEsporte – Movimento Inteligente* melhorou a **usabilidade**, **consistência visual** e **eficiência de navegação**.
 
 ---
 
-### A. Melhoria na Navegação Global e Controle de Sessão
+## 🔍 1. Análise Comparativa do Sistema (Heurísticas de Nielsen)
 
-A ausência de navegação era a maior falha da versão anterior.
+| **Heurística** | **Antes do Redesign** | **Após o Redesign** | **Ganho de UX** |
+|----------------|-----------------------|---------------------|-----------------|
+| **1. Visibilidade do Status do Sistema** | Indicador de login isolado na área de conteúdo. | Botão *Sair* e barra de busca no Header. | Sessão e filtragem posicionadas em local padrão, liberando espaço no conteúdo. |
+| **2. Correspondência com o Mundo Real** | Boa correspondência com nomes de exercícios (Gato-Vaca, Natação). | Inclusão de elementos reais no rodapé (Redes Sociais, Termos). | Reforça a relação com o contexto profissional e social. |
+| **3. Liberdade e Controle do Usuário** | Apenas botão *Sair*. | Cabeçalho e Rodapé com navegação completa (Home, Contato, Legal). | Usuário pode navegar livremente, sem se sentir “preso”. |
+| **4. Consistência e Padrões** | Apenas os cartões de exercício eram consistentes. | Adoção de padrões de web design (Header, Footer, 4 colunas). | Reduz curva de aprendizado e aumenta previsibilidade. |
+| **6. Reconhecimento em vez de Memorização** | Opções escondidas. | Links essenciais visíveis no Header e Footer. | Reduz esforço mental e facilita o reconhecimento. |
+| **7. Flexibilidade e Eficiência de Uso** | Navegação lenta (rolagem longa). | Inclusão da barra de busca global. | Facilita o acesso rápido ao conteúdo. |
+| **8. Estética e Design Minimalista** | Design limpo, mas simples demais. | Integração profissional de Header e Footer. | Visual mais completo e coerente. |
+| **9. Ajuda e Documentação** | Sem FAQ ou suporte. | Footer inclui Ajuda, FAQ e Fale Conosco. | Facilita o suporte e a autoajuda. |
 
-| **Heurística** | **Componente de Interface** | **Antes (Descrição)** | **Depois (Descrição)** | **Justificativa UX**
-|
+---
 
-|----------------|-----------------------------|------------------------|------------------------|----------------------|
+## 🧩 2. Mudanças de Interface e Heurística Justificativa
 
-| **3. Liberdade e Controle do Usuário** | Header de Navegação | Inexistente. O usuário não tinha como sair da tela principal. | 
+### A. 🔝 Melhoria na Navegação Global e Controle de Sessão
 
-Implementação de Header fixo com links: Home, Contato, Fale Conosco, Sair. | Fornece ponto de controle claro e liberdade de 
+| **Heurística** | **Componente** | **Antes** | **Depois** | **UX Justificativa** |
+|----------------|----------------|------------|-------------|----------------------|
+| **3. Liberdade e Controle do Usuário** | Cabeçalho de Navegação | Inexistente; o usuário ficava preso na tela principal. | Header fixo com links: *Home, Contato, Fale Conosco, Sair*. | Garante controle total de navegação e liberdade de movimento. |
+| **1. Visibilidade do Status do Sistema** | Indicador de Sessão | Mensagem de boas-vindas dentro do conteúdo. | Sessão movida para o canto superior direito. | Segue padrão visual da web e mantém consistência. |
+| **7. Flexibilidade e Eficiência de Uso** | Barra de Busca | Inexistente; exigia rolagem. | Adição da barra “Buscar exercício”. | Aumenta a eficiência e rapidez na localização de conteúdo. |
 
-navegação. |
+---
 
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
+### B. 📚 Reforço de Ajuda, Documentação e Consistência
 
-| **1. Visibilidade do Status do Sistema** | Indicador de Sessão | Mensagem de boas-vindas dentro do conteúdo. | Status de 
+| **Heurística** | **Componente** | **Antes** | **Depois** | **UX Justificativa** |
+|----------------|----------------|------------|-------------|----------------------|
+| **9. Ajuda e Documentação** | Rodapé | Inexistente. | Footer com 4 colunas e links (Ajuda, FAQ, Status). | Acesso rápido a suporte e documentação. |
+| **2. Correspondência com o Mundo Real** | Links Institucionais | Ausentes; aparência de protótipo. | Footer com Termos, Política e Redes Sociais. | Transmite credibilidade e padrão profissional. |
+| **6. Reconhecimento em Vez de Memorização** | Hierarquia de Links | Links misturados e ocultos. | Footer organiza links secundários por categoria. | Evita memorização e melhora navegação. |
 
-sessão movido para o canto superior direito do Header. | Padrão web e posicionamento consistente. |
+---
 
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
+## 🚀 3. Próximas Melhorias (Plano de Refinamento)
 
-| **7. Flexibilidade e Eficiência de Uso** | Barra de Busca | Inexistente. Pesquisa dependia de rolagem. | Adição de barra “Buscar exercício” no topo da lista. | Aumenta eficiência e rapidez na busca de conteúdo. |
+| **Heurística** | **Problema Identificado** | **Ação Planejada** |
+|----------------|----------------------------|--------------------|
+| **5. Prevenção de Erros** | Botão “Sair” pode ser clicado acidentalmente. | Implementar modal de confirmação antes de sair. |
+| **6. Reconhecimento em Vez de Memorização** | Barra de busca é puramente textual. | Adicionar ícone de lupa (🔎) como reforço visual. |
+| **4. Consistência e Padrões** | Cores das tags são inconsistentes. | Padronizar paleta semântica para categorias. |
+| **4. Consistência e 8. Estética** | Tipografia e logo variam entre Header e Footer. | Uniformizar tipografia, tamanhos e espaçamento. |
+| **3. Liberdade e Controle do Usuário** | Links externos abrem na mesma aba. | Usar `target="_blank"` em links externos. |
 
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-### B. Reforço de Ajuda, Documentação e Consistência
-
-O Footer resolveu problemas de suporte e identidade de marca.
-
-| **Heurística** | **Componente de Interface** | **Antes (Descrição)** | **Depois (Descrição)** | **Justificativa UX** |
-
-|----------------|-----------------------------|------------------------|------------------------|----------------------|
-
-
-| **9. Ajuda e Documentação** | Footer (Rodapé) | Inexistente. | Implementação de Footer com 4 colunas e links de
-suporte (Ajuda / FAQ, Status do Sistema). | Usuário tem acesso constante à ajuda e documentação. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **2. Correspondência entre o Sistema e o Mundo Real** | Links Institucionais | Ausente. Sistema parecia um protótipo.
-
-| Footer inclui links legais (Termos, Política, Redes Sociais). | Garante credibilidade e padrão de produto real. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-| **6. Reconhecimento em Vez de Memorização** | Hierarquia de Links | Links escondidos/misturados. | Footer organiza links secundários de forma clara e agrupada. | Elimina necessidade de memorizar locais de navegação. |
-
-|----------------|------------------------------------------|-----------------------------------|-------------------------------|
-
-## 3. ✅ Próximas Melhorias (Plano de Refinamento)
-
-Pontos planejados para atingir o nível máximo de usabilidade e consistência:
-
-| **Heurística** | **Problema a Ser Resolvido** | **Ação de Melhoria Planejada** |
-
-|----------------|-------------------------------|--------------------------------|
-
-| **5. Prevenção de Erros** | O botão “Sair” pode ser clicado acidentalmente. | Implementar uma confirmação (modal) ao clicar. |
-
-|----------------|-------------------------------|--------------------------------|
-| **6. Reconhecimento** | A barra de busca é puramente textual. | Adicionar ícone de lupa (🔎) para reforço visual. |
-
-|----------------|-------------------------------|--------------------------------|
-
-| **4. Consistência e Padrões** | Cores das tags (Aquecimento, Core) são inconsistentes. | Padronizar sistema de cores semântico. |
-
-|----------------|-------------------------------|--------------------------------|
-
-| **4. Consistência e 8. Estética** | Logo e tipografia variam entre Header e Footer. | Garantir tipografia e espaçamento idênticos. |
-
-|----------------|-------------------------------|--------------------------------|
-
-| **3. Liberdade e Controle** | Links externos desviam o usuário. | Usar `target="_blank"` em links externos. |
-
-|----------------|-------------------------------|--------------------------------|
+---
 
 ## 📌 Conclusão
 
-O redesign do sistema **IEsporte** resultou em melhorias significativas de **usabilidade**, **navegabilidade** e **consistência visual**, seguindo rigorosamente as **Heurísticas de Nielsen**.  
-As próximas etapas de refinamento visam consolidar a experiência do usuário e alinhar o produto a padrões profissionais de UX/UI.
+O **redesign do sistema IEsporte** trouxe melhorias expressivas em **usabilidade**, **navegabilidade** e **consistência visual**, baseadas nas **Heurísticas de Nielsen**.  
+O sistema agora oferece uma experiência mais **intuitiva, padronizada e eficiente**, reduzindo erros e melhorando o fluxo cognitivo do usuário.  
+
+As próximas etapas visam consolidar a experiência do usuário, garantindo que o *IEsporte* alcance padrões profissionais de **UX/UI Design**.
 
 ---
-```
- 
-  -------------------------------------------------------------------------
+
+## 🧭 Resumo Final
+
+> O projeto evoluiu de um protótipo funcional para uma plataforma robusta e coerente, onde cada decisão de design é fundamentada em princípios de usabilidade.  
+> As melhorias implementadas fortalecem o produto e aumentam a confiança do usuário no sistema.
+
+---
+
+© 2025 – *IEsporte: Movimento Inteligente*  
+Desenvolvido por **Sérgio Ademir Rocha do Carmo**
