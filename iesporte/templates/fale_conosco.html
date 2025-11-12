@@ -28,6 +28,24 @@
         }
     </style>
 </head>
+
+<div style="margin-top: 3rem; text-align: center; padding: 2rem 0;">
+    <a href="{% url 'home' %}" style="
+        display: inline-block;
+        padding: 0.75rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)'" 
+       onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)'">
+        ← Voltar para a Página Inicial
+    </a>
+</div>
+
 <body>
     <div class="container">
         <h1 class="text-4xl font-extrabold text-center text-slate-800 mb-4">

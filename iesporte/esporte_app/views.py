@@ -112,3 +112,20 @@ def logout_view(request):
     """View de logout - usa Facade"""
     facade.autenticacao.fazer_logout(request)
     return redirect('home')
+
+def delete_account(request):
+    """View de exclusão de conta - usa Facade"""
+    if request.method == 'POST':
+        sucesso, mensagem = facade.excluir_conta(request)
+        
+        if sucesso:
+            # Adicionar mensagem de sucesso para ser exibida na home
+            # (requer configuração de messages framework no Django)
+            return redirect('home')
+        else:
+            # Adicionar mensagem de erro
+            context = facade.obter_contexto_pagina_inicial(request)
+            context['error'] = mensagem
+            return render(request, 'index.html', context)
+            
+    return redirect('home')

@@ -87,7 +87,35 @@
             <span>📋</span> Seus Exercícios <span class="text-sm text-slate-400">(clique para ver detalhes)</span>
         </h2>
         
-        <input type="text" id="filtro-exercicio" placeholder="Buscar exercício" class="w-full px-3 py-2 border-2 border-indigo-100 rounded mb-6 focus:border-indigo-500" onkeyup="filtrarCards()">
+        <!-- CAMPO DE BUSCA COM LUPA -->
+        <div style="position: relative; margin-bottom: 1.5rem;">
+            <input 
+                type="text" 
+                id="filtro-exercicio" 
+                placeholder="Buscar exercício" 
+                class="w-full px-3 py-2 border-2 border-indigo-100 rounded focus:border-indigo-500" 
+                style="padding-left: 2.5rem;"
+                onkeyup="filtrarCards()"
+            >
+            <svg 
+                style="
+                    position: absolute;
+                    left: 0.75rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    color: #a5b4fc;
+                    pointer-events: none;
+                " 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+            >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </div>
+
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {% for exercicio in exercicios %}
             <div class="bg-white border-2 border-indigo-100 rounded-xl p-4 shadow hover:shadow-lg transition exercise-card cursor-pointer"
@@ -111,7 +139,7 @@
                         {% if exercicio.imagem %}
                             <img src="{{ exercicio.imagem }}" alt="{{ exercicio.nome }}" class="w-full h-48 object-cover rounded mb-4 exercise-image">
                         {% endif %}
-                        </div>
+                    </div>
                     <div class="border-t pt-4 mt-4">
                         <strong class="text-indigo-600">💡 Objetivo:</strong>
                         <p class="text-gray-700 mt-1 mb-4">{{ exercicio.objetivo }}</p>
@@ -122,8 +150,10 @@
             </div>
             {% endfor %}
         </div>
+
         {% else %}
         <div class="auth-container">
+            <!-- ===== FORMULÁRIO DE LOGIN (INTACTO) ===== -->
             <form method="POST" action="{% url 'login' %}" class="mb-8 bg-slate-50 rounded-lg p-6 shadow">
                 {% csrf_token %}
                 <h2 class="text-2xl mb-4 font-bold text-slate-700">Login</h2>
@@ -145,7 +175,10 @@
                     Entrar
                 </button>
             </form>
+
             <hr class="my-8 border-slate-200">
+
+            <!-- ===== FORMULÁRIO DE CRIAR CONTA (COM TERMO DE USO E BOTÃO DE EXCLUSÃO) ===== -->
             <form method="POST" action="{% url 'signup' %}" class="bg-slate-50 rounded-lg p-6 shadow">
                 {% csrf_token %}
                 <h2 class="text-2xl mb-4 font-bold text-slate-700">Criar Conta</h2>
@@ -164,22 +197,82 @@
                     required
                     minlength="6"
                 >
-                <label class="flex items-center text-xs mb-4">
+                <!-- TERMO DE USO COMPRIMIDO EM 4 LINHAS -->
+                <label class="flex items-start text-xs mb-4 p-2 bg-blue-50 rounded border border-blue-200">
                     <input 
                         type="checkbox"
                         name="aceite_termos"
                         required
-                        class="mr-2 accent-indigo-600"
+                        class="mr-2 accent-indigo-600 mt-0.5 flex-shrink-0"
                     >
-                    Aceito os termos de uso
+                    <span class="text-gray-700 leading-tight">
+                        Concordo com os <a href="#" class="text-indigo-600 font-semibold hover:underline">Termos de Serviço</a> e 
+                        <a href="#" class="text-indigo-600 font-semibold hover:underline">Política de Privacidade</a>. 
+                        Entendo que meus dados serão processados conforme descrito.
+                    </span>
                 </label>
-                <button type="submit" class="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-800 transition w-full">
+                <button type="submit" class="px-4 py-2 rounded bg-indigo-600 text-white font-semibold hover:bg-indigo-800 transition w-full mb-3">
                     Cadastrar
+                </button>
+
+                <!-- BOTÃO DE EXCLUSÃO DE CONTA -->
+                <button 
+                    type="button" 
+                    onclick="mostrarConfirmacaoExclusao()" 
+                    class="px-4 py-2 rounded bg-red-500 text-white font-semibold hover:bg-red-600 transition w-full text-sm"
+                >
+                    🗑️ Excluir Conta
                 </button>
             </form>
         </div>
+
+        <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO -->
+        <div id="modal-exclusao" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+            <div class="bg-white rounded-xl p-8 max-w-sm shadow-lg border-l-4 border-red-500">
+                <h3 class="text-xl font-bold text-red-600 mb-2">⚠️ Excluir Conta</h3>
+                <p class="text-gray-700 mb-6 text-sm">
+                    Esta ação é <strong>irreversível</strong>. Todos os seus dados, exercícios salvos e histórico serão permanentemente deletados. Você tem certeza?
+                </p>
+                <div class="flex gap-3">
+                    <button 
+                        onclick="fecharConfirmacaoExclusao()" 
+                        class="px-4 py-2 rounded bg-gray-300 text-gray-800 font-semibold hover:bg-gray-400 transition flex-1"
+                    >
+                        Não, manter conta
+                    </button>
+                    <form method="POST" action="{% url 'delete_account' %}" style="flex: 1;">
+                        {% csrf_token %}
+                        <button 
+                            type="submit" 
+                            class="px-4 py-2 rounded bg-red-600 text-white font-semibold hover:bg-red-700 transition w-full"
+                        >
+                            Sim, excluir
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         {% endif %}
     </div>
+      <!-- ===== JAVASCRIPT PARA MODAL ===== -->
+        <script>
+            function mostrarConfirmacaoExclusao() {
+                document.getElementById('modal-exclusao').classList.remove('hidden');
+            }
+
+            function fecharConfirmacaoExclusao() {
+                document.getElementById('modal-exclusao').classList.add('hidden');
+            }
+
+            // Fechar modal clicando fora
+            document.getElementById('modal-exclusao').addEventListener('click', function(event) {
+                if (event.target === this) {
+                    fecharConfirmacaoExclusao();
+                }
+            });
+        </script>
+
 
     <div id="spinner" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-indigo-600 border-b-4"></div>

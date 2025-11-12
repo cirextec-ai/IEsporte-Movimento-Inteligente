@@ -273,6 +273,17 @@ class UsuarioFacade:
         except User.DoesNotExist:
             return None
 
+    @staticmethod
+    def excluir_usuario(user):
+        """Exclui um usuário do banco de dados."""
+        try:
+            user.delete()
+            print(f"[FACADE] ✅ Usuário excluído: {user.username}")
+            return True, "Conta excluída com sucesso."
+        except Exception as e:
+            print(f"[FACADE] ❌ Erro ao excluir usuário: {e}")
+            return False, f"Erro ao excluir conta: {str(e)}"
+
 
 class IEsporteFacade:
     """
@@ -315,3 +326,18 @@ class IEsporteFacade:
             return redirect('home'), None
         else:
             return None, mensagem
+
+    def excluir_conta(self, request):
+        """Processa a exclusão da conta do usuário logado."""
+        if not self.autenticacao.esta_autenticado(request):
+            return False, "Usuário não está autenticado."
+
+        user = self.autenticacao.obter_usuario_atual(request)
+        
+        # Primeiro, faz logout para invalidar a sessão
+        self.autenticacao.fazer_logout(request)
+        
+        # Depois, exclui o usuário
+        sucesso, mensagem = self.usuarios.excluir_usuario(user)
+        
+        return sucesso, mensagem
