@@ -112,3 +112,20 @@ def logout_view(request):
     """View de logout - usa Facade"""
     facade.autenticacao.fazer_logout(request)
     return redirect('home')
+
+
+def delete_account(request):
+    """
+    View para deletar a conta de um usuário.
+    """
+    if request.method == 'POST':
+        sucesso, erro = facade.deletar_conta(request)
+        if sucesso:
+            return redirect('home')
+        else:
+            context = facade.obter_contexto_pagina_inicial(request)
+            context['error'] = erro
+            return render(request, 'index.html', context)
+    
+    # Se não for POST, apenas redireciona para a home
+    return redirect('home')

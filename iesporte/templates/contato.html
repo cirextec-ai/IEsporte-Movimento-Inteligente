@@ -20,8 +20,31 @@
             margin: 2rem auto;
             max-width: 1200px;
         }
+
+        .btn-voltar {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    background-color: #5a4bff; /* roxo suave para combinar */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background-color: #3d35cc;
+    transform: translateY(-2px);
+}
     </style>
 </head>
+<a href="{% url 'home' %}" class="btn-voltar">
+    ⬅ Voltar
+</a>
+
 <body>
     <div class="container">
         <h1 class="text-4xl font-extrabold text-center text-indigo-700 mb-4">

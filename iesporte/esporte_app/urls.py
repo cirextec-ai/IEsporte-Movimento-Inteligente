@@ -11,5 +11,6 @@ urlpatterns = [
     # NOVAS ROTAS DO HEADER (Resolvendo o NoReverseMatch)
     path('contato/', views.contato, name='contato'), 
     path('fale-conosco/', views.fale_conosco, name='fale_conosco'),
+    path('delete_account/', views.delete_account, name='delete_account'),
 ]
 

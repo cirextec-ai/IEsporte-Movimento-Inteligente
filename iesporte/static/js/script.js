@@ -303,3 +303,26 @@ document.querySelectorAll('.exercise-link').forEach(link => {
         document.getElementById('sidebar').classList.remove('active');
     });
 });
+
+function filtrarCards() {
+    const val = document.getElementById('filtro-exercicio').value.trim().toLowerCase();
+    let encontrou = false;
+
+    document.querySelectorAll('.exercise-card').forEach(card => {
+        const texto = card.innerText.toLowerCase();
+        const exibe = (texto.includes(val) || val === "");
+        card.style.display = exibe ? '' : 'none';
+        if (exibe) encontrou = true;
+    });
+
+    let msg = document.getElementById('nenhum-exercicio-msg');
+    if (!msg) {
+        msg = document.createElement('div');
+        msg.id = 'nenhum-exercicio-msg';
+        msg.className = 'text-red-500 text-center mt-6 font-semibold';
+        msg.textContent = 'Exercício não encontrado';
+        const grid = document.querySelector('.grid');
+        grid.parentElement.appendChild(msg);
+    }
+    msg.style.display = encontrou ? 'none' : '';
+}
