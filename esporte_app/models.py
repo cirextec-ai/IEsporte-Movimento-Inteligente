@@ -32,3 +32,10 @@ class Sessao(models.Model):
 
     def __str__(self):
         return f"{self.atleta} - {self.atividade} @ {self.data}"
+    # models.py
+class RelatorioProgresso(models.Model):
+    usuario = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    data = models.DateTimeField(auto_now_add=True)
+    detalhes = models.TextField()  # Descrições customizadas
+    
+ 

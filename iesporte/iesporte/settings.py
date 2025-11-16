@@ -70,8 +70,8 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'iesporte.wsgi.application'
-ASGI_APPLICATION = 'iesporte.asgi.application'
+WSGI_APPLICATION = 'iesporte.wsgi.application' # Esta linha já estava correta, mas é bom confirmar.
+ASGI_APPLICATION = 'iesporte.asgi.application' # Esta linha também parece correta.
 
 
 # Database

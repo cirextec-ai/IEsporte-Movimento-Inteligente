@@ -20,4 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('esporte_app.urls')),  # Incluir URLs do app esporte_app
+    #path('', include('iesporte.urls'))
+
 ]

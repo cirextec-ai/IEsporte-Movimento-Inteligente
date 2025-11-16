@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import json
 from django.http import HttpRequest, HttpResponse
+from .models import RelatorioProgresso
 from typing import List, Dict, Any
 
 # Obter o modelo de usuário configurado
@@ -214,3 +216,8 @@ def buscar_exercicios(request: HttpRequest) -> HttpResponse:
     
     # Renderiza o template com o contexto (lista filtrada e termo de busca)
     return render(request, 'esporte_app/lista_exercicios.html', context)
+
+
+    
+   
+

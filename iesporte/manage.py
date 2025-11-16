@@ -4,7 +4,7 @@ import sys
 
 def main():
     """Executa o utilitário de linha de comando do Django."""
-    # Ajuste aqui o caminho correto para o seu settings.py
+    # A linha abaixo define qual arquivo de settings o Django deve usar.
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'iesporte.settings')
     try:
         from django.core.management import execute_from_command_line
