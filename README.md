@@ -131,11 +131,19 @@ O IEsporte foi desenvolvido seguindo as recomendações **WCAG 2.1** para garant
 - ✅ **Formulários Etiquetados** – Labels associados corretamente aos inputs
 
 ### Como Testar Acessibilidade
+1. ** Com Teclado:
+# Pressione TAB para navegar entre elementos
+# Pressione ENTER ou ESPAÇO em cards de exercício
+# Teste com mouse desconectado
+# Validação Automática:
+# Use Axe DevTools: https://www.deque.com/axe/devtools/
+# Use Lighthouse (Chrome DevTools)
 
-1. **Com Leitor de Tela (NVDA):**
+2. **Com Leitor de Tela (NVDA):**
    ```bash
    # Baixe em: https://www.nvaccess.org/
    # Abra a página e navegue com leitores de tela habilitados
+   
 
 
 ## 🚀 Como Executar o Sistema
