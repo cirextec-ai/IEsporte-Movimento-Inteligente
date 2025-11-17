@@ -118,6 +118,26 @@ O protótipo do IEsporte demonstra as seguintes capacidades:
 
 ---
 
+## 🌐 Acessibilidade
+
+O IEsporte foi desenvolvido seguindo as recomendações **WCAG 2.1** para garantir acesso inclusivo a pessoas com deficiência.
+
+### Funcionalidades de Acessibilidade Implementadas
+
+- ✅ **Alt Text em Imagens** – Descrições textuais para leitores de tela
+- ✅ **Navegação por Teclado** – TAB para focar, ENTER/ESPAÇO para ativar
+- ✅ **Semântica ARIA** – Labels descritivos para elementos interativos
+- ✅ **Contraste Adequado** – Cores com contraste WCAG AA
+- ✅ **Formulários Etiquetados** – Labels associados corretamente aos inputs
+
+### Como Testar Acessibilidade
+
+1. **Com Leitor de Tela (NVDA):**
+   ```bash
+   # Baixe em: https://www.nvaccess.org/
+   # Abra a página e navegue com leitores de tela habilitados
+
+
 ## 🚀 Como Executar o Sistema
 
 Como Executar o Sistema
