@@ -83,6 +83,47 @@ O sistema apresentava as seguintes **limitações para pessoas com deficiência*
 2. Compare cores dos botões e textos
 3. Verifique se cumprem WCAG AA
 
+# Testes - Funcionalidade LIBRAS
+
+## ✅ Checklist de Testes
+
+### Visualização
+- [ ] Página de LIBRAS carrega corretamente
+- [ ] Vídeo principal aparece no lado esquerdo
+- [ ] Vídeo do intérprete aparece no lado direito
+- [ ] Cores da interface são atrativas (azul e roxo)
+- [ ] Layout é responsivo (funciona em mobile)
+
+### Reprodução de Vídeo
+- [ ] Vídeo principal reproduz corretamente
+- [ ] Vídeo de LIBRAS reproduz corretamente
+- [ ] Play/Pause funcionam em ambos os vídeos
+- [ ] Sincronização de tempo funciona
+- [ ] Barra de progresso é clara
+
+### Informações
+- [ ] Descrição do exercício é exibida
+- [ ] Nível de dificuldade é mostrado
+- [ ] Nome do intérprete é exibido
+- [ ] Movimentos em LIBRAS são descri
+
+tos claramente
+- [ ] Vocabulário é acessível e bem formatado
+
+### Acessibilidade
+- [ ] Botão LIBRAS é visível e clicável
+- [ ] Cores têm contraste adequado
+- [ ] Textos têm tamanho legível
+- [ ] Funciona com teclado (TAB)
+- [ ] Leitura com NVDA funciona
+
+## 🎯 Status Final
+- [ ] APROVADO
+- [ ] PENDÊNCIAS (descrever abaixo)
+
+## 📝 Observações
+[Descreva aqui qualquer problema]
+
 ## Próximos Passos Recomendados
 
 - [ ] Testar com leitores de tela reais (NVDA, JAWS)
