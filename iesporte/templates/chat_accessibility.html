@@ -1,0 +1,92 @@
+<!-- Componente de Chat para comunicação -->
+<div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
+    <h2 class="text-2xl font-bold text-indigo-700 mb-4">💬 Chat de Comunicação</h2>
+    
+    <!-- Aviso de acessibilidade -->
+    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4" role="alert" aria-label="Informação de acessibilidade">
+        <p class="text-sm text-yellow-800">
+            🔤 <strong>Modo Acessível:</strong> Este chat é otimizado para pessoas surdas e mudas.
+            Toda comunicação é visual e baseada em texto.
+        </p>
+    </div>
+
+    <!-- Histórico de mensagens -->
+    <div id="chat-history" class="bg-gray-50 rounded p-4 mb-4 h-96 overflow-y-auto" 
+         aria-live="polite" aria-label="Histórico de mensagens">
+        <p class="text-gray-500 text-center">Nenhuma mensagem ainda. Comece a conversa!</p>
+    </div>
+
+    <!-- Área de entrada de texto -->
+    <form id="chat-form" class="flex gap-2" aria-label="Formulário de envio de mensagem">
+        <input type="text" id="message-input" placeholder="Digite sua mensagem aqui..."
+               class="flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+               aria-label="Campo de texto para digitar mensagem"
+               maxlength="500">
+        <button type="submit" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition"
+                aria-label="Enviar mensagem">
+            ➤ Enviar
+        </button>
+    </form>
+
+    <!-- Contador de caracteres (acessibilidade visual) -->
+    <div class="text-xs text-gray-500 mt-2">
+        <span id="char-count">0</span>/500 caracteres
+    </div>
+</div>
+
+<script>
+    // Chat em tempo real para mudos
+    const chatForm = document.getElementById('chat-form');
+    const messageInput = document.getElementById('message-input');
+    const chatHistory = document.getElementById('chat-history');
+    const charCount = document.getElementById('char-count');
+
+    // Atualizar contador de caracteres
+    messageInput.addEventListener('input', function() {
+        charCount.textContent = this.value.length;
+    });
+
+    // Enviar mensagem
+    chatForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const message = messageInput.value.trim();
+        
+        if (message === '') return;
+
+        // Adicionar mensagem ao histórico
+        const messageEl = document.createElement('div');
+        messageEl.className = 'bg-indigo-100 p-3 rounded mb-2 text-indigo-900';
+        messageEl.innerHTML = `<strong>Você:</strong> ${message}`;
+        chatHistory.appendChild(messageEl);
+
+        // Limpar input
+        messageInput.value = '';
+        charCount.textContent = '0';
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+
+        // Enviar para servidor (AJAX)
+        try {
+            const response = await fetch('/api/chat/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({ message: message })
+            });
+            
+            const data = await response.json();
+            
+            // Mostrar resposta
+            if (data.response) {
+                const responseEl = document.createElement('div');
+                responseEl.className = 'bg-gray-200 p-3 rounded mb-2 text-gray-900';
+                responseEl.innerHTML = `<strong>IEsporte:</strong> ${data.response}`;
+                chatHistory.appendChild(responseEl);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+        } catch (error) {
+            console.error('Erro ao enviar mensagem:', error);
+        }
+    });
+</script>
