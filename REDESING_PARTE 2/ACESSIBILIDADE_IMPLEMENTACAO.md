@@ -93,6 +93,9 @@ O sistema apresentava as seguintes **limitações para pessoas com deficiência*
 - [ ] Vídeo do intérprete aparece no lado direito
 - [ ] Cores da interface são atrativas (azul e roxo)
 - [ ] Layout é responsivo (funciona em mobile)
+- [ ] Acessibilidade LIBRAS no IEsporte
+- [ ] Chat de Comunicação
+- [ ] Recurso multilíngua no IEsporte 
 
 ### Reprodução de Vídeo
 - [ ] Vídeo principal reproduz corretamente
@@ -116,13 +119,14 @@ tos claramente
 - [ ] Textos têm tamanho legível
 - [ ] Funciona com teclado (TAB)
 - [ ] Leitura com NVDA funciona
+- [ ] Chat de Comunicação
+- [ ] Recurso multilíngua no IEsporte 
 
 ## 🎯 Status Final
 - [ ] APROVADO
 - [ ] PENDÊNCIAS (descrever abaixo)
 
 ## 📝 Observações
-[Descreva aqui qualquer problema]
 
 ## Próximos Passos Recomendados
 
