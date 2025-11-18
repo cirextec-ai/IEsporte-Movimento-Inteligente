@@ -1,3 +1,10 @@
+
+# 🧠 Relatório Técnico - Avaliação Heurística de Nielsen
+
+**Aluno:** Sérgio Ademir Rocha do Carmo  
+**Professor Dr.:** Andrey Rodrigues    
+**Versão Avaliada:** Sistema Antes das Mudanças (Imagens Anteriores) vs. Sistema Atual (Com Header, Footer e Busca)
+
 # Implementação de Acessibilidade - IEsporte
 
 ## Descrição da Melhoria
@@ -93,6 +100,8 @@ O sistema apresentava as seguintes **limitações para pessoas com deficiência*
 - [ ] Vídeo do intérprete aparece no lado direito
 - [ ] Cores da interface são atrativas (azul e roxo)
 - [ ] Layout é responsivo (funciona em mobile)
+- [ ] Chat de Comunicação
+- [ ] Acessibilidade Multilinguagem
 
 ### Reprodução de Vídeo
 - [ ] Vídeo principal reproduz corretamente
@@ -105,13 +114,13 @@ O sistema apresentava as seguintes **limitações para pessoas com deficiência*
 - [ ] Descrição do exercício é exibida
 - [ ] Nível de dificuldade é mostrado
 - [ ] Nome do intérprete é exibido
-- [ ] Movimentos em LIBRAS são descri
-
-tos claramente
+- [ ] Movimentos em LIBRAS são descritos claramente
 - [ ] Vocabulário é acessível e bem formatado
 
 ### Acessibilidade
 - [ ] Botão LIBRAS é visível e clicável
+- [ ] Chat de Comunicação
+- [ ] Acessibilidade Multilinguagem
 - [ ] Cores têm contraste adequado
 - [ ] Textos têm tamanho legível
 - [ ] Funciona com teclado (TAB)
