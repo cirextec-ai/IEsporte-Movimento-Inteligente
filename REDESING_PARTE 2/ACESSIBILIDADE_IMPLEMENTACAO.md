@@ -1,3 +1,10 @@
+# 🧠 Relatório Técnico - TP_4 Parte 2 Manutenção Evolutiva 
+
+**Aluno:** Sérgio Ademir Rocha do Carmo  
+**Professor Dr.:** Andrey Rodrigues  
+**Data da Análise:** 10 de Novembro de 2025  
+**Versão Avaliada:** Sistema Antes das Mudanças (Imagens Anteriores) vs. Sistema Atual (Com Header, Footer e Busca)
+
 # Implementação de Acessibilidade - IEsporte
 
 ## Descrição da Melhoria
@@ -13,6 +20,8 @@ O sistema apresentava as seguintes **limitações para pessoas com deficiência*
 3. **Falta de semântica ARIA** → Leitores de tela não anunciavam corretamente a função dos cards.
 4. **Menu de navegação sem labels descritivos** → Navegação confusa para usuários com leitores de tela.
 5. **Contraste de cores inadequado em alguns elementos** → Usuários com baixa visão tinham dificuldade em ler textos.
+6. ** Sem recurso de acessibilidade em Libras → Usuários com deficiencia em comunicação e audição sem inclusão.**
+7. ** Sem Recurso Multilíngua ** → Usuario sem opçoes de troca de idioma no IEsporte. 
 
 **Impacto:** Essas limitações violam princípios de acessibilidade essenciais (WCAG 2.1, Lei Brasileira de Inclusão - Lei 13.146/2015) e excluem pessoas com deficiência da experiência completa do sistema.
 
