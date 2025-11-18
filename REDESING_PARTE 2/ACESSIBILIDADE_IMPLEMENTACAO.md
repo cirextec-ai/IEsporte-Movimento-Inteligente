@@ -1,3 +1,10 @@
+
+# 🧠 Relatório Técnico - Avaliação Heurística de Nielsen
+
+**Aluno:** Sérgio Ademir Rocha do Carmo  
+**Professor Dr.:** Andrey Rodrigues    
+**Versão Avaliada:** Sistema Antes das Mudanças (Com Header, Footer e Busca) vs. Sistema Atual (Com Header, Footer com Libras, Chat e Multilinguagem)
+
 # Implementação de Acessibilidade - IEsporte
 
 ## Descrição da Melhoria
@@ -116,6 +123,8 @@ tos claramente
 - [ ] Textos têm tamanho legível
 - [ ] Funciona com teclado (TAB)
 - [ ] Leitura com NVDA funciona
+- [ ] Chat de Comunicação
+- [ ] acessibilidade multilingagem
 
 ## 🎯 Status Final
 - [ ] APROVADO
@@ -142,4 +151,4 @@ tos claramente
 
 **Data da Implementação:** 16/11/2025  
 **Desenvolvedor:** [Sérgio Ademir Rocha do Carmo]  
-**Versão:** 1.0
+
