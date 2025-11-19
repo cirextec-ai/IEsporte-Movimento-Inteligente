@@ -2,7 +2,7 @@
 
 ## Descrição da Melhoria
 
-Foi implementada uma **melhoria significativa de acessibilidade** no módulo de listagem de exercícios (`lista_exercicios.html`) e na interação via JavaScript, garantindo que usuários com deficiência visual e aqueles que dependem de navegação por teclado consigam usar o sistema de forma completa e inclusiva.
+Foi implementada uma **melhoria significativa de acessibilidade** no módulo de listagem de exercícios (`lista_exercicios.html`) e na interação via JavaScript, garantindo que usuários com deficiência visual e aqueles que dependem de uma melhor navegação consigam usar o sistema de forma completa e inclusiva.
 
 ## Problema Identificado
 
