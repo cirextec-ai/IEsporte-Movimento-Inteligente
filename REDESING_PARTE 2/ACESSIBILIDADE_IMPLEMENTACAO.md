@@ -1,5 +1,5 @@
 
-# 🧠 Relatório Técnico - Avaliação Heurística de Nielsen
+# 🧠 Relatório Técnico - PARTE 2 TP_4
 
 **Aluno:** Sérgio Ademir Rocha do Carmo  
 **Professor Dr.:** Andrey Rodrigues    
