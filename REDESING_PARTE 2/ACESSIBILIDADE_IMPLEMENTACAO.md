@@ -85,7 +85,7 @@ O sistema apresentava as seguintes **limitações para pessoas com deficiência*
 
 # Testes - Funcionalidade LIBRAS
 
-## ✅ Checklist de Testes
+## ✅ Checklist de Testes, Chat de Comunicação, Barra Multilinguagem
 
 ### Visualização
 - [ ] Página de LIBRAS carrega corretamente
